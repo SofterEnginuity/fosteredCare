@@ -1,0 +1,190 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header{
+  background-color: rgb(228, 237, 251);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  height:5em;
+}
+p{
+  color:#737272;
+  margin: inherit;
+}
+/* Main */
+main{
+text-align:center;
+  flex-grow:1;
+}
+.maincontent {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Flexbox layout for each section */
+.maincontent section {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.maincontent section h3 {
+  margin: 0 0 10px;
+}
+
+.maincontent section p {
+  margin: 0;
+}
+
+/* Alternating layout styles */
+.maincontent .first,
+.maincontent .third {
+  flex-direction: row-reverse;
+}
+
+.maincontent .second,
+.maincontent .fourth {
+  flex-direction: row;
+}
+
+/* Image styling */
+.maincontent section img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0 20px;
+}
+
+/* Text container styling */
+.maincontent section h3,
+.maincontent section p {
+  width: 100%;
+  text-align: left;
+}
+ /* Footer */
+.footer{
+  background-color: rgb(228, 237, 251);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+}
+
+ul{
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: space-evenly;
+  align-content: stretch;
+  list-style: none;
+  margin:0;
+}
+.appicon{
+  margin: 5px;
+  padding: 10px;
+  width: 158px;
+  height: 56px;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+/* Main */
+
+.intro {
+  outline:black solid 1px;
+  width:100%;
+}
+.intropic{
+vertical-align:center;
+}
+
+
+.first{
+  outline:black solid 1px;
+  width:100%;
+
+}
+/* .first h3{
+/* } */
+.first p{
+  align-self:flex-end;
+} 
+.firstleftimg{
+  width:50%;
+}
+.firstleft{
+  width:50%;
+
+}
+.second{
+  outline:black solid 1px;
+  width:100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: baseline;
+  align-content: stretch;
+  justify-content: flex-start;
+
+}
+.second h3{
+align-self:flex-end;
+}
+/* .second p{
+} */ */
+
+.third{
+  outline:black solid 1px;
+  width:100%;
+}
+.fourth{
+  outline:black solid 1px;
+  width:100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-items: baseline;
+  align-content: stretch;
+  justify-content: flex-start;
+}
+.flex-container {
+  display: flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust spacing between boxes */
+}
+
+.flex-container section {
+  flex: 1 1 calc(50% - 10px); /* Two boxes per row */
+  box-sizing: border-box;
+}
+
+/* section h3 {
+  margin-top: 10px;
+} */
+
+.imgmain {
+  width: 100%;
+  height: auto;
+}
