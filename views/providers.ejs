@@ -23,11 +23,8 @@
 
                             <li class="notable-regular"><a
                                     href="/">Home</a></li>
-                            <li class="notable-regular"><a
-                                    href="/providers">Providers</a></li>
-                            <li class="notable-regular"><a
-                                    href="/families">Families</a></li>
-                            <li>
+                          
+                           
                                 <div class="profile">
                                     <section>
 
@@ -41,6 +38,30 @@
 
                                 </div></li>
                         </ul>
+
+                    
+      <div class="col-sm-6">
+        <% for(var i=0; i<users.length; i++) {%>
+         
+            <div class="wellimg">
+              <form action="/uploadPhoto" method="POST" enctype="multipart/form-data">
+                <input type="file" required name="photo" id="file<%= i %>" class="inputfile" />
+                <input hidden name="id" value="<%= users[i]._id %>"></input>
+                <label for="file<%= i %>" >Choose a file</label>
+                <button type="submit">Upload</button>
+              </form>
+              <!-- Display uploaded photo if it exists -->
+              <% if (users[i].photo) { %>
+              <img src="<%= users[i].photo %>" alt="Uploaded photo"
+                width="100px" height="auto">
+              <% } %>
+            </div>
+          </div><% } %>
+
+        </div> 
+                        
+
+
                     </nav>
                 </div>
                 <!-- <p>message requests</p> -->
@@ -55,9 +76,11 @@
                         <div class="row1">
                             <div class="drow1">
                                 <section section class="srow1">
-                                    <h1>Person Name/Age</h1>
-                                    <p>Blahh Blahh Blahh
-                                    </p>
+                                    <h1><%= users[i].dob %></h1>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
                                 </section>
                                 <section>
 
@@ -84,11 +107,9 @@
                     <section>
                         <p>&copy; 2024 Fostered Care. All rights reserved.</p>
                     </section>
-                    <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
-                        crossorigin="anonymous"></script>
-                    <script type="text/javascript" src="js/main.js"></script>
+                
                 </footer>
-                <script src="js/main.js"></script>
+                <script src="main.js"></script>
                 <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
                     crossorigin="anonymous"></script>
 

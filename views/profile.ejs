@@ -1,83 +1,67 @@
 <!doctype html>
 <html>
-<head>
-    <title>21 Savage Fan Site</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <title>Profile</title>
+    <link rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-family=Notable&family=PT+Sans&family=Playfair+Display&family=Smooch&family=Wendy+One&display=swap" rel="stylesheet">s
-</head>
-<body>
-<div class="container">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <div class="page-header text-center">
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.local.email) { %>
-                    <div>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                        <div>
-                          <input type="file" name="file" id="file" class="inputfile" />
-                          <label for="file">Choose a file</label>
-                                          <button type="submit">Upload Photo</button>
-  
-                                        <!-- Display uploaded photo if it exists -->
-                                        <% if (user[i].photo) { %>
-                                        <img src="<%= user[i].photo %>" alt="Uploaded photo"
-                                          style="width:100px; height:auto;">
-                                        <% } %>
-                       </div>
-                      </div>
-
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <h3>Messages</h3>
-          <ul class="messages">
+        <h3>Messages</h3>
+        <ul class="messages">
           <% for(var i=0; i<users.length; i++) {%>
             <li class="message">
               <span><%= users[i].local.email %></span>
               <span><%= users[i].dob %></span>
               <span><%= users[i].thumbUp %></span>
               <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span><i class="fa fa-thumbs-down"
+                  aria-hidden="true"></i></span>
               <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
             </li>
-            
-          <% } %>
+
+            <% } %>
           </ul>
 
-          <!-- <h2>Add a message</h2>
-        <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="message" name="msg">
-            <button type="submit">Submit</button>
-          </form>
         </div>
-        <% } %> -->
 
-</div>
+        <div class="col-sm-6">
+          <% for(var i=0; i<users.length; i++) {%>
+          
+              <div class="wellimg">
+                <form action="/uploadPhoto" method="POST"
+                  enctype="multipart/form-data">
+                  <input type="file" required name="photo" id="file<%= i %>"
+                    class="inputfile" />
+                  <input hidden name="id" value="<%= users[i]._id %>"></input>
+                <label for="file<%= i %>">Choose a file</label>
+                <button type="submit">Upload</button>
+              </form>
+              <!-- Display uploaded photo if it exists -->
+              <% if (users[i].photo) { %>
+              <img src="<%= users[i].photo %>" alt="Uploaded photo"
+                width="100px" height="auto">
+              <% } %>
+            </div>
+          </div><% } %>
 
-<script src="main.js"></script>
+        </div>
+        <script src="main.js"></script>
 
-</body>
-</html>
+      </body>
+    </html>

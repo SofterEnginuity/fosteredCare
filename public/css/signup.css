@@ -9,7 +9,10 @@ body {
     flex-direction: column;
     min-height: 100vh;
   }
-  
+  h1{
+    font-size:25px;
+    /* margin-left:99px; */
+  }
   header{
     background-color: rgb(228, 237, 251);
     color: white;
@@ -17,7 +20,9 @@ body {
     text-align: center;
     height:5em;
   }
-
+main{
+  flex:1;
+}
 .midsignup{
   display:flex;
   justify-content:space-evenly;
@@ -26,37 +31,72 @@ body {
 .col-sm-offset-3 {
   margin-left: 1px;
 }
-
+p{
+  margin:0;
+}
 .col-sm-6 {
   width: 100%;
 }
-    
-.pimg{
-border: 2px solid black;
-height:400px;
-width:400px;
+input{
+  margin:0;
 }
-  .footer{
-    background-color: rgb(228, 237, 251);
-    color: white;
-    padding: 1em;
-    text-align: center;
-    width: 100%;
-    bottom: 0;
-  }
+input[type="radio"]{
+  margin:0;
+}
+.footerp{
+  text-align:center;
+}
+.radiodiv{
+  display:flex;
+  gap:5px;
+}
+
+.footer {
+  background-color: rgb(228, 237, 251);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
   
-  ul{
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    justify-content: space-evenly;
-    align-content: stretch;
-    list-style: none;
-  }
-  .appicon{
-    margin: 5px;
+ul {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: space-evenly;
+  align-content: flex-end;
+  list-style: none;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top:0;
+  margin-bottom: -10px;
+}
+
+  .appicon {
+    margin: -5px;
     padding: 10px;
-    width: 158px;
-    height: 56px;
+    width: 133px;
+    height: 41px;
+}
+
+  .radio{
+    height:5px;
   }
-  
+
+  .providers{
+    margin-left:2px;
+  }
+
+  .families{
+    margin-right:2px;
+  }
+.form-control{
+  height:25px;
+}
+label{
+  margin-bottom:0;
+}

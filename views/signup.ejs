@@ -1,14 +1,15 @@
 <!doctype html>
 <html>
     <head>
-        <title>21 Savage Fan Site</title>
+        <title>Sign Up</title>
         <link rel="stylesheet"
             href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
         <link rel="stylesheet"
-            href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
         <link rel="stylesheet" href="css/signup.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://cdnjs.com/libraries/font-awesome">
         <link
             href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Delicious+Handrawn&family=Mrs+Saint+Delafield&family=Notable&family=PT+Sans&family=Playfair+Display&family=Smooch&family=Wendy+One&display=swap"
             rel="stylesheet">
@@ -21,8 +22,8 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/providers">Providers</a></li>
-                        <li><a href="/families">Families</a></li>
+                        <!-- <li><a href="/providers">Providers</a></li>
+                        <li><a href="/families">Families</a></li> -->
                         <!-- <li><div>
                             <section>
                                 <h3>Name</h3>
@@ -41,16 +42,18 @@
             <!-- <p>message requests</p> -->
         </header>
         <body>
+            <main>
             <div class="container">
                 <div class="col-sm-6 col-sm-offset-3">
 
-                    <h1><span class="fa fa-user"></span> Signup</h1>
 
                     <% if (message.length > 0) { %>
                     <div class="alert alert-danger"><%= message %></div>
                     <% } %>
                     <div class="midsignup">
+                        <h1 class="signup"><span class="fa fa-bucket"></span> Signup</h1>
                     <section>
+                        
                         <!-- LOGIN FORM -->
                         <form action="/signup" method="post">
                             <div class="form-group">
@@ -80,13 +83,17 @@
                             </div>
                             <div class="form-group">
                                 <label>UserType</label>
-                                <input type="radio" class="form-control"
+                                <div class="radiodiv">
+                                <input type="radio" class="radio providers"
                                     name="type" value="families">
-                                <input type="radio" class="form-control"
+                                    <label>Providers</label>
+                                <input type="radio" class="radio families"
                                     name="type" value="providers">
+                                    <label>Families</label>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>date of birth</label>
+                                <!-- <label>Date of Birth</label> -->
                                 <input type="text" class="form-control"
                                     name="dob">
                             </div>
@@ -99,19 +106,16 @@
                         <p class="pimg"></p>
                     </section>
                 </div>
+            </main>
                     <hr>
 
-                    <p>Already have an account? <a href="/login">Login</a></p>
-                    <p>Or go <a href="/">home</a>.</p>
+                    <p class=" footerp">Already have an account? <a href="/login">Login</a></p>
+                 
 
                 </div>
             </div>
             <footer class="footer">
-                <ul class="footernav">
-                    <a href="#">Our Mission</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Contact Us</a>
-                </ul>
+                
                 <!-- <h1>Country Resources for Foster Parents</h1> -->
                 <ul>
                     <!-- <li><a href="https://nfpaonline.org/">National Foster Parent Association</a></li> -->
@@ -119,7 +123,7 @@
                     <li></li>
                     <li></li>
                 </ul>
-                <section></section>
+                <section>
                 <img class="appicon"
                     src="data:image/png;base64,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">
                 <img class="appicon"
@@ -128,6 +132,11 @@
             <section>
                 <p>&copy; 2024 Fostered Care. All rights reserved.</p>
             </section>
+            <ul class="footernav">
+                <a href="#">Our Mission</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </ul>
         </footer>
 
     </body>

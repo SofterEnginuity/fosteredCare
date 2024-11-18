@@ -92,40 +92,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.querySelectorAll('.delete-icon').forEach(element => {
+  element.addEventListener('click', function() {
+    const itemId = this.dataset.id;
 
-//photo upload
-
-document.querySelectorAll('.photo-upload-form').forEach(form => {
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const formData = new FormData();
-    const id = this.dataset.id;
-    const fileInput = this.querySelector('input[type="file"]');
-
-    if (fileInput.files.length === 0) {
-      alert('Please select a file to upload.');
-      return;
-    }
-
-    formData.append('photo', fileInput.files[0]);
-    formData.append('_id', id);
-
-    fetch('/uploadPhoto', {
-      method: 'POST',
-      body: formData
+    fetch('/messages', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ _id: itemId })
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        window.location.reload(); // Reload to display the uploaded image
+    .then(response => {
+      if (response.ok) {
+        window.location.reload();
       } else {
-        console.error('Upload failed:', data.error);
+        console.error('Failed to delete the item.');
       }
-    })
-    .catch(error => console.error('Error:', error));
+    });
   });
 });
+
+
+
 
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
@@ -146,11 +135,7 @@ Array.from(trash).forEach(function(element) {
       });
 });
 
-const url = `https://api.api-ninjas.com/v1/historicalevents?month=${month}&day=${day}`
 
-const api = `/1+6k3+/YumDPj5gkqz+sg==m1HFVQpOaJhs5J5d`
-  
-  console.log(userInput)
  
 
 // console.log(day)

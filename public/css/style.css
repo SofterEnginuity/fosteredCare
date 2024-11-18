@@ -40,6 +40,15 @@ text-align:center;
   padding: 20px;
 }
 
+ 
+  .jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-end;
+}
+
+
 /* Flexbox layout for each section */
 .maincontent section {
   display: flex;

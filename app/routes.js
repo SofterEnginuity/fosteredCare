@@ -1,3 +1,8 @@
+
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' }); // Directory to save uploads
+const { ObjectId } = require('mongodb');
+
 module.exports = function(app, passport, db) {
 
 // normal routes ===============================================================
@@ -57,23 +62,42 @@ app.get('/providers',isLoggedIn, (req, res) => {// renders family portal
 
 
 //photo upload
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' }); // Directory to save uploads
-const { ObjectId } = require('mongodb');
+
 
 app.post('/uploadPhoto', upload.single('photo'), (req, res) => {
-  const id = req.body._id;
-  const photoPath = `uploads/${req.file.filename}`; // Path to saved file
+  console.log('File received:', req.file);
+  console.log(req.body);
 
-  db.collection('users').updateOne(
-    { _id: ObjectId(id) },
-    { $set: { photo: photoPath } },
-    (err, result) => {
+  if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No file uploaded!' });
+  }
+
+  const id = req.body.id; // The ID of the document you want to update
+  const photoPath = `/uploads/${req.file.filename}`; // Path of uploaded file
+console.log(id)
+
+db.collection('users').updateOne(
+  { _id: ObjectId(id) },
+  { $set: { photo: photoPath } },
+  (err, result) => {
       if (err) return res.status(500).json({ success: false, error: err });
-      res.json({ success: true });
-    }
-  );
+      res.redirect(req.user.type === "families" ? '/providers' : '/families')
+  }
+);
 });
+
+
+app.delete('/messages', (req, res) => {
+  const itemId = req.body._id;
+
+  db.collection('Crud1').findOneAndDelete({ _id: new ObjectId(itemId) }, (err, result) => {
+    if (err) return res.status(500).send(err);
+    res.send('Item deleted!');
+  });
+});
+
+
+
 
     // app.post('/messages', (req, res) => {
     //   db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0}, (err, result) => {
