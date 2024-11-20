@@ -16,11 +16,13 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 var configDB 
+console.log(process.env)
 try{
  configDB = require('./config/database.js');
 }catch(err){
   configDB = {
-    url : process.env.url.replace('DBNAME','DemoDay'),
+    url : process.env.url
+
   }
 }
 
