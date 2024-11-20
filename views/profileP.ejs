@@ -1,54 +1,53 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Profile</title>
-    <link rel="stylesheet"
-      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet"
-      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Full-Stack App</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Delicious+Handrawn&family=Mrs+Saint+Delafield&family=Notable&family=PT+Sans&family=Playfair+Display&family=Smooch&family=Wendy+One&display=swap"
+            rel="stylesheet">
+    </head>
+    <body>
 
-  </head>
-  <body>
-    <div class="container">
+        <header>
 
-      <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-      </div>
+            <div>
+                <nav id="nav">
+                    <nav id="nav">
+                        <ul>
 
-      <div class="row">
+                            <li class="notable-regular"><a
+                                    href="/">Home</a></li>
+                          
+                           
+                                <div class="profile">
+                                    <section>
 
-        <h3>Messages</h3>
-        <ul class="messages">
-          <% for(var i=0; i<users.length; i++) {%>
-            <li class="message">
-              <span><%= users[i].local.email %></span>
-              <span><%= users[i].dob %></span>
-              <span><%= users[i].thumbUp %></span>
-              <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down"
-                  aria-hidden="true"></i></span>
-              <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-            </li>
+                                        <p><a href="/profile">My Account</a></p>
+                                        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+                                    </section>
 
-            <% } %>
-          </ul>
+                                    <!-- <section>
+                                        <img src="">
+                                    </section> -->
 
-        </div>
+                                </div></li>
+                        </ul>
 
-        <div class="col-sm-6">
-          <% for(var i=0; i<users.length; i++) {%>
-          
-              <div class="wellimg">
-                <form action="/uploadPhoto" method="POST"
-                  enctype="multipart/form-data">
-                  <input type="file" required name="photo" id="file<%= i %>"
-                    class="inputfile" />
-                  <input hidden name="id" value="<%= users[i]._id %>"></input>
-                <label for="file<%= i %>">Choose a file</label>
+                    
+      <div class="col-sm-6">
+        <% for(var i=0; i<users.length; i++) {%>
+         
+            <div class="wellimg">
+              <form action="/uploadPhoto" method="POST" enctype="multipart/form-data">
+                <input type="file" required name="photo" id="file<%= i %>" class="inputfile" />
+                <input hidden name="id" value="<%= users[i]._id %>"></input>
+                <label for="file<%= i %>" >Choose a file</label>
                 <button type="submit">Upload</button>
               </form>
               <!-- Display uploaded photo if it exists -->
@@ -59,8 +58,64 @@
             </div>
           </div><% } %>
 
-        </div>
-        <script src="main.js"></script>
+        </div> 
+                        
 
-      </body>
-    </html>
+
+                    </nav>
+                </div>
+                <!-- <p>message requests</p> -->
+            </header>
+
+            <main>
+                <h3>Find a family to foster!</h3>
+
+                <div>
+                    <% for(var i=0; i <users.length; i++) {%>
+
+                        <div class="row1">
+                            <div class="drow1">
+                                <section section class="srow1">
+                                    <h1><%= users[i].dob %></h1>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
+                                    <p><%= users[i].type %></p>
+                                </section>
+                                <section>
+
+                                    <img class="listimg"
+                                        src="https://i.imgur.com/J13ThPK.png">
+                                </section>
+                                <section>
+                                    <i class="fa-solid fa-person"></i>
+
+                                </section>
+                            </div>
+
+                        </div>
+                        <% } %>
+                    </div>
+
+
+
+                    
+                </main>
+
+                <footer class="footer">
+                    <ul class="footernav">
+                        <a href="#">Our Mission</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Contact Us</a>
+                    </ul>
+                    <section>
+                        <p>&copy; 2024 Fostered Care. All rights reserved.</p>
+                    </section>
+                
+                </footer>
+                <script src="main.js"></script>
+                <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
+                    crossorigin="anonymous"></script>
+
+            </body>
+        </html>

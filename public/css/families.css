@@ -17,6 +17,9 @@ body {
   width:75px;
   height:75px;
 }
+
+
+
 ul{
   display: flex;
   align-items: center;
@@ -120,7 +123,9 @@ color:green;;
 .srow4 {
   width: 60%;
 }
-
+.col-sm-6{
+  outline:1px solid black;
+}
 .footer {
   background-color: rgb(228, 237, 251);
   color: white;

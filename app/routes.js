@@ -81,7 +81,9 @@ db.collection('users').updateOne(
   { $set: { photo: photoPath } },
   (err, result) => {
       if (err) return res.status(500).json({ success: false, error: err });
-      res.redirect(req.user.type === "families" ? '/providers' : '/families')
+      // res.redirect(req.user.type === "families" ? '/providers' : '/families')
+       res.redirect('/profile')
+
   }
 );
 });

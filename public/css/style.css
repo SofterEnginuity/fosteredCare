@@ -62,6 +62,7 @@ text-align:center;
 
 .maincontent section p {
   margin: 0;
+  width:75%
 }
 
 /* Alternating layout styles */
