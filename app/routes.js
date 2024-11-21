@@ -41,22 +41,22 @@ app.get('/', (req, res) => {// default page happen on refresh
     res.render('index.ejs', {users: result})
   })
 })
-
+//help
 app.get('/families',isLoggedIn,(req, res) => {// renders family portal
   // console.log(req.user)
-
-  db.collection('users').find({type:'providers'}).toArray((err, result) => {//go to db and finds all of the
-    if (err) return console.log(err)//reading the html 
-    res.render('providers.ejs', {users: result})
-  })
-})
-
-
-app.get('/providers',isLoggedIn, (req, res) => {// renders family portal
 
   db.collection('users').find({type:'families'}).toArray((err, result) => {//go to db and finds all of the
     if (err) return console.log(err)//reading the html 
     res.render('families.ejs', {users: result})
+  })
+})
+
+
+app.get('/providers',isLoggedIn, (req, res) => {// renders provider portal
+
+  db.collection('users').find({type:'providers'}).toArray((err, result) => {//go to db and finds all of the
+    if (err) return console.log(err)//reading the html 
+    res.render('providers.ejs', {users: result})
   })
 })
 
@@ -76,6 +76,8 @@ app.post('/uploadPhoto', upload.single('photo'), (req, res) => {
   const photoPath = `/uploads/${req.file.filename}`; // Path of uploaded file
 console.log(id)
 
+
+//???
 db.collection('users').updateOne(
   { _id: ObjectId(id) },
   { $set: { photo: photoPath } },
@@ -176,7 +178,7 @@ app.delete('/messages', (req, res) => {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/families', // redirect to the secure profile section
+            successRedirect : '/families' || '/providers', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));

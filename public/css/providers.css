@@ -34,5 +34,124 @@ body {
         width: 100%;
         bottom: 0;
       }
+     
 
+      .profile{
+        display:flex;
+      }
+      .profilepic{
+        width:75px;
+        height:75px;
+      }
+      
+      
+      
+      ul{
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+        justify-content: space-evenly;
+        align-content: stretch;
+        list-style: none;
+      }
+     
+      p{
+        margin-bottom:10px;
+      }
+      .top{
+        height:10vh;
+      
+      }
+      main {
+        text-align: center;
+        flex-grow: 1;
+      }
+      
+      .listimg {
+        width: 350px;
+        height: 250px;
+        border-radius: 25px;
+      }
+      
+      .drow1 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+      }
+      
+      .row1 {
+          /* display: flex; */
+          width: 50%;
+          float: left;
+      }
+      
+      .srow1 {
+        width: 50%;
+      
+      }
+      
+      
+      .drow2 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+      }
+      .fa-solid{
+      color:green;;
+      }
+      .row2 {
+        display: flex;
+      }
+      
+      .srow2 {
+        width: 60%;
+      }
+      
+      
+      .drow3 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+      }
+      
+      .row3 {
+        display: flex;
+      }
+      
+      .srow3 {
+        width: 60%;
+      }
+      
+      .drow4 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+      }
+      
+      .row4 {
+        display: flex;
+      }
+      
+      .srow4 {
+        width: 60%;
+      }
+      .col-sm-6{
+        outline:1px solid black;
+      }
+      .footer {
+        background-color: rgb(228, 237, 251);
+        color: white;
+        padding: 1em;
+        text-align: center;
+        width: 100%;
+        bottom: 0;
+      }
   

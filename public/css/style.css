@@ -35,9 +35,10 @@ text-align:center;
   flex-grow:1;
 }
 .maincontent {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   padding: 20px;
+
 }
 
  
@@ -79,7 +80,7 @@ text-align:center;
 /* Image styling */
 .maincontent section img {
   width: 50%;
-  height: auto;
+  height: 200px;
   border-radius: 8px;
   margin: 0 20px;
 }
@@ -122,13 +123,24 @@ ul{
 /* Main */
 
 .intro {
-  outline:black solid 1px;
-  width:100%;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .intropic{
 vertical-align:center;
 }
-
+.intro p{
+width:80%;
+}
+.introduction{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .first{
   outline:black solid 1px;
@@ -161,8 +173,10 @@ vertical-align:center;
 .second h3{
 align-self:flex-end;
 }
-/* .second p{
-} */ */
+ /* .second p{
+
+ } */
+
 
 .third{
   outline:black solid 1px;
