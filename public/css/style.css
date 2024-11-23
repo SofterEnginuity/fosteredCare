@@ -40,7 +40,6 @@ text-align:center;
   padding: 20px;
 
 }
-
  
   .jumbotron {
     display: flex;
@@ -80,7 +79,7 @@ text-align:center;
 /* Image styling */
 .maincontent section img {
   width: 50%;
-  height: 200px;
+  height: 265px;
   border-radius: 8px;
   margin: 0 20px;
 }
@@ -208,6 +207,16 @@ align-self:flex-end;
   margin-top: 10px;
 } */
 
+.div1{
+  width:50%;
+}
+.div2{
+
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
 .imgmain {
   width: 100%;
   height: auto;

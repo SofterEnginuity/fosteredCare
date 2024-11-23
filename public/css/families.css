@@ -18,7 +18,30 @@ body {
   height:75px;
 }
 
+header{
+  background-color: rgb(228, 237, 251);
+  color: white;
+  padding: 1em;
+  text-align: center;
+  height:5em;
+}
 
+
+main{
+  text-align:center;
+    flex-grow:1;
+  }
+
+
+  .footer{
+      background-color: rgb(228, 237, 251);
+      color: white;
+      padding: 1em;
+      text-align: center;
+      width: 100%;
+      bottom: 0;
+    }
+   
 
 ul{
   display: flex;

@@ -10,6 +10,27 @@ body {
     font-weight: 400;
     font-style: normal;
   } */
-  .col-sm-6{
+ li{
 border:1px solid black;
+width: 30%;
+list-style:none; 
+  }
+  select{
+    width:10%;
+  }
+
+  header{
+    background-color: rgb(228, 237, 251);
+    color: white;
+    padding: 1em;
+    text-align: center;
+    height:5em;
+  }
+  .footer{
+    background-color: rgb(228, 237, 251);
+    color: white;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
   }

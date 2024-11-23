@@ -26,6 +26,15 @@ Array.from(thumbUp).forEach(function(element) {
       });
 });
 
+document.querySelector('label#email').addEventListener('click', function(event){
+ document.querySelector('input#email').value = 'User2@families.com'
+ document.querySelector('input#password').value = 'families'
+})
+
+document.querySelector('label#password').addEventListener('click', function(event){
+  document.querySelector('input#email').value = 'User2@providers.com'
+  document.querySelector('input#password').value = 'providers'
+})
 
 Array.from(thumbDown).forEach(function(element) {
   element.addEventListener('click', function(){
