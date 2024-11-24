@@ -14,3 +14,10 @@ HTML, CSS, Javascript, Node, Express, MongoDB
 ## Lessons Learned:
 
 I was able to learn more in depth crossover routes, meaning my families page - renders the provider profiles and visa versa. This was a bit difficult at first and getting the correct information to be stored.
+
+
+## Installation/Usage
+1. Clone repo
+2. run `npm install`
+3. run `node server.js`
+4. Navigate to `localhost:8065`
