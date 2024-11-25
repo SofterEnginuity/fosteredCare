@@ -3,8 +3,10 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var childSchema = mongoose.Schema({
     name           : String,
-    age            : Number,
+    dob           : Date,
     gender         :String,
+    location:       String,
+    allergies     : String,
     medications    : String,
 
 })
@@ -12,17 +14,42 @@ const Child = mongoose.model('Child',childSchema)
 
 
 // define the schema for our user model
+// var userSchema = mongoose.Schema({
+
+//     local            : {
+//         email        : String,
+//         password     : String
+//     },
+//     facebook         : {
+//         id           : String,
+//         token        : String,
+//         name         : String,
+//         email        : String
+//     },
+//     twitter          : {
+//         id           : String,
+//         token        : String,
+//         displayName  : String,
+//         username     : String
+//     },
+//     google           : {
+//         id           : String,
+//         token        : String,
+//         email        : String,
+//         name         : String
+//     }
+
+// });
 var userSchema = mongoose.Schema({
 
     local            : {
         email        : String,
         password     : String,
-   
-        name           : String,
-        familySize    : Number,
-        allergies     : String,
-        age            : Number,
-        gender      : String,
+        userType     : String,
+        name         : String,
+        dob          : Date,
+        gender       : String,
+       familySize    : Number, 
       
         children : [childSchema]     
    
@@ -45,7 +72,7 @@ var userSchema = mongoose.Schema({
         email        : String,
         name         : String
     },
-     type           : String,
+        
 });
 
 // generating a hash

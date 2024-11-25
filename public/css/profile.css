@@ -1,36 +1,112 @@
+html{
+  height:100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+   height:100%
   }
   /* .notable-regular {
     font-family: "Notable", sans-serif !important;
     font-weight: 400;
     font-style: normal;
   } */
+.main{
+  display: flex;              /* Flexbox on the container */
+  flex-grow: 1;               /* Make it grow to fill available space */
+  justify-content: space-between;
+  height:100vh;
+}
+
  li{
-border:1px solid black;
-width: 30%;
+width: 80%;
+height:400px;
 list-style:none; 
+display:flex;
+flex-direction:column;
   }
+  #form{
+  width:100%;
+}
   select{
     width:10%;
   }
-
+.col-sm-6{
+  height:auto;
+  width:100%;
+}
+.jumbo{
+  padding:none;
+}
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-end;
+  padding:0.5px;
+}
+.text-center{
+  padding:none;
+}
+form{
+    width: 20%;
+    /* text-align: center; */
+    margin-left: 45px;
+}
   header{
     background-color: rgb(228, 237, 251);
-    color: white;
+    color: black;
     padding: 1em;
     text-align: center;
-    height:5em;
+    height:10vh;
   }
+.user-section{
+  display:flex;
+  flex-direction:column;
+
+}
+.user span{
+  font-size: 25px;
+}
+
+.parent {
+  display:flex;
+  flex-direction:column;
+}
+.name{
+  font:40px;
+  font-weight:bold;
+}
+
+.children {
+  display:flex;
+  flex-direction:column;
+  width:50%;
+}
+.child{
+  display: flex;
+  flex-direction: column;
+  font-size:24px;outline:black;
+}
+.row{
+  display:flex;
+
+ justify-content: space-between;
+}
+footer{
+  display:flex;
+  align-items:flex-end;
+}
   .footer{
+
     background-color: rgb(228, 237, 251);
     color: white;
     padding: 1em;
     text-align: center;
     width: 100%;
     bottom: 0;
+    height:8vh;
   }

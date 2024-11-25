@@ -12,7 +12,9 @@ module.exports = function (app, passport, db) {
   });
 
   // PROFILE SECTION =========================
+
   app.get("/profile", isLoggedIn, function (req, res) {
+    console.log(req.user)
     res.render("profile.ejs", {
       user: req.user,
     });
@@ -38,13 +40,27 @@ module.exports = function (app, passport, db) {
         res.render("index.ejs", { users: result });
       });
   });
+
+
   //help
   app.get("/families", isLoggedIn, (req, res) => {
     // renders family portal
-    // console.log(req.user)
+    console.log(req.user)
 
     db.collection("users")
-      .find({ type: "families" })
+      .find({ 'local.userType': "providers" })
+      .toArray((err, result) => {
+        //go to db and finds all of the
+        if (err) return console.log(err); //reading the html
+        res.render("providers.ejs", { users: result });
+      });
+  });
+  
+app.get("/providers", isLoggedIn, (req, res) => {
+    // renders provider portal
+
+    db.collection("users")
+      .find({ 'local.userType': "families" })
       .toArray((err, result) => {
         //go to db and finds all of the
         if (err) return console.log(err); //reading the html
@@ -52,36 +68,19 @@ module.exports = function (app, passport, db) {
       });
   });
 
-  app.get("/profile1", isLoggedIn, (req, res) => {
-    // renders provider portal
-    const Steven = new Child()
-    Steven.name = 'Steven';
-    Steven.age = 5;
-    Steven.gender = "f";
-    Steven.medications = 'Albuterol'
-    req.user.local.age = 27;
-    req.user.local.name = "Becca";
-    req.user.local.familysize = 4;
-    req.user.local.allergies = "Peanuts";
-    req.user.local.gender = "F";
-    req.user.local.children = [Steven];
-    req.user.save()
-    res.send('profile1')
-  });
-
-
-  app.get("/providers", isLoggedIn, (req, res) => {
-    // renders provider portal
-
+  app.get("/singleListing/:id", isLoggedIn, (req, res) => {
     db.collection("users")
-      .find({ type: "providers" })
-      .toArray((err, result) => {
-        //go to db and finds all of the
-        if (err) return console.log(err); //reading the html
-        res.render("providers.ejs", { users: result });
-      });
+    .findOne({ '_id': ObjectId(req.params.id)},(err, result) => {
+      //go to db and finds all of the
+      if (err) return console.log(err); //reading the html
+      console.log(result)
+      res.render("singleListing.ejs", { user: result });
+    });
+   
   });
 
+
+  
   //photo upload
 
   app.post("/uploadPhoto", upload.single("photo"), (req, res) => {
@@ -104,7 +103,7 @@ module.exports = function (app, passport, db) {
       { $set: { photo: photoPath } },
       (err, result) => {
         if (err) return res.status(500).json({ success: false, error: err });
-        // res.redirect(req.user.type === "families" ? '/providers' : '/families')
+        // res.redirect(req.user.local.local.userType === "families" ? '/providers' : '/families')
         res.redirect("/profile");
       }
     );
@@ -186,9 +185,63 @@ module.exports = function (app, passport, db) {
       failureFlash: true, // allow flash messages
     }),
     function (req, res) {
-      res.redirect(req.user.type === "families" ? "/providers" : "/families");
+      res.redirect(req.user.local.userType === "families" ? "/providers" : "/families");
     }
   );
+  
+  app.post('/profile', (req, res) => {
+    // db.collection('users').save({name:req.user.name,dob:req.user.dob,gender:req.user.gender, familySize: req.user.familySize}, (err, result) => {
+    //   if (err) return console.log(err)
+    //   console.log('saved to database')
+    //   res.redirect('/profile')
+    // })
+  })
+// create a new child 
+
+  app.post('/addChild', (req, res) => {
+    var newChild    = new Child();
+    newChild.name= req.body.childName
+    newChild.dob = req.body.childDob
+    newChild.gender = req.body.childGender
+    newChild.allergies = req.body.childAllergies
+    newChild.medications = req.body.childMedications
+    req.user.local.children.push(newChild)
+    req.user.save()
+    console.log('add child', req.body)
+      res.redirect('/profile')
+    })
+
+    // app.post('/addParent', (req, res) => {
+    //   var newParent    = new Child();
+    //   newParent.name= req.body.ParentName
+    //   newParent.dob = req.body.ParentDob
+    //   newParent.gender = req.body.ParentGender
+    //   newParent.allergies = req.body.ParentAllergies
+    //   newParent.medications = req.body.ParentMedications
+    //   req.user.local.children.push(newParent)
+    //   req.user.save()
+    //   console.log('add parent', req.body)
+    //     res.redirect('/profile')
+    //   })
+
+
+  app.put('/profile', (req, res) => {
+    const { _id, ...updatedFields } = req.body;
+  
+    db.collection('users')
+      .findOneAndUpdate(
+        { _id: new ObjectId(_id) }, // Query to find the specific document by its ID
+        { $set: updatedFields }, // Dynamically set fields based on client input
+        { returnDocument: 'after' },
+        (err, result) => {
+          if (err) return res.send(err);
+          res.send(result);
+        }
+      );
+  });
+
+
+
 
   // SIGNUP =================================
   // show the signup form

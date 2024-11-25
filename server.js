@@ -22,7 +22,6 @@ try{
 }catch(err){
   configDB = {
     url : process.env.url
-
   }
 }
 

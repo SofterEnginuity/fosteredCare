@@ -39,7 +39,7 @@
             </header>
 
             <main>
-
+                
                 <h3>Find the perfect provider for oyur family!</h3>
 
                     <div>
@@ -47,9 +47,10 @@
                         <div class="row1">
                             <div class="drow1">
                                 <section section class="srow1">
-                                    <h1 class="name"><%= users[i].dob %></h1>
-                                    <p class="description"><%= users[i].type %></p>
-                               
+                                    <h1 class="name"><a href="/singleListing/<%= users[i]._id %>"><%= users[i].local.name %></a></h1>
+                                    <p class="description"><%= users[i].local.userType %></p>
+                                             
+                            
                                 </section>
                                 <section>
                                     <img class="listimg"

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Full-Stack App</title>
+        <title>Providers</title>
         <link rel="stylesheet" href="css/families.css">
         <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,13 +42,13 @@
                 <h3>Find the perfect family to foster!</h3>
 
                     <div>
-                        <% for(var i=0; i<users.length; i++) {%>
+                        <% for(var i=0; i<users.length; i++){ %>
                         <div class="row1">
                             <div class="drow1">
                                 <section section class="srow1">
-                                    <h1 class="name"><%= users[i].firstname %></h1>
-                                    <p class="description"><%= users[i].type %></p>
-                                 
+                                    <h1 class="name"><%= users[i].local.name %></h1>
+                                    <p class="userType"><%= users[i].local.userType %></p>
+                                    <p><a href="/singleListing"><%= users[i]._id %></a></p>
 
                                 </section>
                                 <section>
@@ -65,7 +65,7 @@
                         </div>
                         <% } %>
                     </div>
-<label for="Age">Select an Age</label>
+<!-- <label for="Age">Select an Age</label> -->
 
                     <div class="col-sm-6">
                         <% for(var i=0; i<users.length; i++) {%>
