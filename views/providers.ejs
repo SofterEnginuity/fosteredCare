@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="css/families.css">
         <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Delicious+Handrawn&family=Mrs+Saint+Delafield&family=Notable&family=PT+Sans&family=Playfair+Display&family=Smooch&family=Wendy+One&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Delicious+Handrawn&family=Mrs+Saint+Delafield&family=Notable&family=PT+Sans&family=Playfair+Display&family=Smooch&family=Wendy+One&display=swap"
+            rel="stylesheet">
     </head>
     <body>
 
@@ -18,15 +20,15 @@
                 <nav id="nav">
                     <nav id="nav">
                         <ul>
-                            <li class="notable-regular"><a href="/">Home</a></li>
                            
-                          
+
                             <li>
                                 <div class="profile">
                                     <section>
-                           
+
                                         <p><a href="/profile">My Account</a></p>
-                                        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+                                        <a href="/logout"
+                                            class="btn btn-default btn-sm">Logout</a>
                                     </section>
                                 </div>
 
@@ -39,16 +41,18 @@
 
             <main>
 
-                <h3>Find the perfect family to foster!</h3>
+                <h3>Find a family to foster !</h3>
 
-                    <div>
-                        <% for(var i=0; i<users.length; i++){ %>
+                <div>
+                    <!-- <% for(var i=0; i<users.length; i++){ %> -->
                         <div class="row1">
                             <div class="drow1">
                                 <section section class="srow1">
-                                    <h1 class="name"><%= users[i].local.name %></h1>
-                                    <p class="userType"><%= users[i].local.userType %></p>
-                                    <p><a href="/singleListing"><%= users[i]._id %></a></p>
+                                    <h1 class="name"><a
+                                            href="/singleListing/<%= users[i]._id %>"><%=
+                                            users[i].name %></a></h1>
+                                    <p class="userType"><%=users[i].userType %></p>
+                                        <img src="<%= users[i].photo %>" alt="Uploaded photo" width="100px" height="auto">
 
                                 </section>
                                 <section>
@@ -56,55 +60,49 @@
                                     <img class="listimg"
                                         src="https://i.imgur.com/J13ThPK.png">
                                 </section>
-                                <section>
-                                    <i class="fa-solid fa-person"></i>
+                             
 
-                                </section>
                             </div>
+                            <form action="/uploadPhoto" method="POST"
+                                enctype="multipart/form-data">
 
+                                <input type="file" name="photo" id="file<%= i %>" style="display:none" />
+                                <!-- <label for="file<%= i %>">Choose a
+                                    file</label>
+                                <button type="submit">Upload</button> -->
+                            </form>
+                            <!-- Display uploaded photo if it exists -->
+                            <% if (users[i].photo) { %>
+                            <img src="<%= users[i].photo %>"
+                                alt="Uploaded photo"
+                                width="100px" height="auto">
+                            <% } %>
                         </div>
                         <% } %>
                     </div>
-<!-- <label for="Age">Select an Age</label> -->
+                    <!-- <label for="Age">Select an Age</label> -->
 
                     <div class="col-sm-6">
-                        <% for(var i=0; i<users.length; i++) {%>
-   
-                        <div class="wellimg">
-                               <form action="/uploadPhoto" method="POST"
-                                   enctype="multipart/form-data">
-   
-                                       <!-- <input hidden name="id" value="<%= users[i]._id %>"></input> -->
-                                    <label for="file<%= i %>">Choose a
-                                           file</label>
-                                    <button type="submit">Upload</button>
-                               </form>
-                                   <!-- Display uploaded photo if it exists -->
-                                   <% if (users[i].photo) { %>
-                                   <img src="<%= users[i].photo %>"
-                                       alt="Uploaded photo"
-                                       width="100px" height="auto">
-                                   <% } %>
-                              </div>
-                         </div><% } %>
-                           </div>
-                       </div>
-                </main>
+         
 
-                <footer class="footer">
-                    <ul class="footernav">
-                        <a href="#">Our Mission</a>
-                        <a href="#">FAQ</a>
-                        <a href="#">Contact Us</a>
-                    </ul>
-                    <section>
-                        <p>&copy; 2024 Fostered Care. All rights reserved.</p>
-                    </section>
-                   
-                </footer>
-                <script src="js/main.js"></script>
-                <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
-                    crossorigin="anonymous"></script>
+                    </div>
+                </div>
+            </main>
 
-            </body>
-        </html>
+            <footer class="footer">
+                <ul class="footernav">
+                    <a href="#">Our Mission</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Contact Us</a>
+                </ul>
+                <section>
+                    <p>&copy; 2024 Fostered Care. All rights reserved.</p>
+                </section>
+
+            </footer>
+            <script src="js/main.js"></script>
+            <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
+                crossorigin="anonymous"></script>
+
+        </body>
+    </html>

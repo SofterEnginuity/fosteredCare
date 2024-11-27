@@ -17,20 +17,24 @@
     
 		<header>
 
-			<!-- <div class="jumbotron text-center" id="jumbo"> -->
 
-			<div class="page-header text-center">
-    <h1>Profile Page</h1>
-
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-  </div>
+        <section>
+          <p class="notable-regular"><a
+              href="/">Back</a></p>
+          
+         
+          <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      </section>
 
 		</header>
     <main>
-  
+  <section class="top">
+    <section class="userbio">
           <div class="row">
             <div class="parent col-sm-6">
-              <!-- <h3>Messages</h3> -->
+        
+
+         
               <ul class="messages">
                <li class="message">
                  <section class="user user-section">
@@ -41,6 +45,7 @@
                     <span class="user">Date of Birth:<%= user.local.dob %></span>
                     
                     <span class="user">Family Size:<%= user.local.familySize %></span>
+                    
                      <% if (user.photo) { %>
                     <img src="<%= user.photo %>" alt="Uploaded photo"
                       width="100px" height="auto">
@@ -53,30 +58,13 @@
                     <label for="file"></label>
                     <button type="submit">Upload</button>
                   </form>
-       
-                   
+
                   </section>
-                 </div>
-
-              <div class="children">
-                <section class="child">  
-                  <% for(let i =0; i < user.local.children.length; i++){ %> 
-            
-                <h3>Child<%=i+1%></h3>
-                  <span><%= user.local.children[i].name %></span>
-                  <span><%= user.local.children[i].age %></span>
-                  <span><%= user.local.children[i].gender %></span>
-                  <span><%= user.local.children[i].medications %></span>
-                  <span><%= user.local.children[i].allergies%></span>
-                              
-                  <% } %>
-    </section> 
-              
-                   
-             
-
-                </div>
-
+             </div>
+            <div class="topimg">
+              <img src="uploads/1a32d928cf0ccb1f76ed7acb1657dbf7">
+            </div>
+</section>
                   
             </li>
           </ul>
@@ -88,7 +76,7 @@
 
         </div>
       </div>
-      <section>
+      <section class="childform">
         <h2>Add a Child</h2>
         <form action="/addChild" method="POST">
           
@@ -134,20 +122,44 @@
               <button>Add Child</button>
           </form>
           
-        <form action="/uploadPhoto" method="POST"
-        enctype="multipart/form-data">
-        <input type="file" required name="photo" id="file"
-          class="inputfile" />
-        <input hidden name="id" value="<%= user._id %>"></input>
-      <label for="file"></label>
-      <button type="submit">Upload</button>
-      </form>
-
-      <% if (user.photo) { %>
-      <img src="<%= user.photo %>" alt="Uploaded photo"
-        width="100px" height="auto">
-      <% } %>
+          <form action="/uploadPhoto" method="POST"
+          enctype="multipart/form-data">
+          <input type="file" required name="photo" id="file"
+            class="inputfile" />
+          <input hidden name="id" value="<%= user._id %>"></input>
+        <label for="file"></label>
+        <button type="submit">Upload</button>
+        </form>
+  
+        <% if (user.photo) { %>
+        <img src="<%= user.photo %>" alt="Uploaded photo"
+          width="100px" height="auto">
+        <% } %>
       </section>
+    </section>
+
+
+
+    <div class="children">   
+      <% for(let i =0; i < user.local.children.length; i++){ %> 
+        <section class="childbio">
+    <section class="child">  
+     
+  
+      <h3 class="kids">Child<%=i+1%></h3>
+        <span class="kids">Name:<%= user.local.children[i].name %></span>
+        
+        <span class="kids">Gender:<%= user.local.children[i].gender %></span>
+        <span class="kids">Medications:<%= user.local.children[i].medications %></span>
+        <span class="kids">Allergies: <%= user.local.children[i].allergies%></span>
+        <span class="kids">Allergies: <%= user.local.children[i].photo%></span>
+</section> 
+
+<%}%>
+
+
+
+
     </main>
     <footer class="footer">
 			<ul class="footernav">
@@ -155,19 +167,7 @@
 				<a href="#">FAQ</a>
 				<a href="#">Contact Us</a>
 			</ul>
-			<!-- <h1>Country Resources for Foster Parents</h1> -->
-			<!-- <ul> -->
-				<!-- <li><a href="https://nfpaonline.org/">National Foster Parent Association</a></li> -->
-				<!-- <li><a href></a></li>
-				<li></li>
-				<li></li>
-			</ul> -->
-			<!-- <section>
-				<img class="appicon"
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAABQCAMAAADfnGukAAABRFBMVEUAAAAODg4BAQEBAQEBAQEBAQFVVVUAAAAAAAABAQFNTU1KSkoDAwNBQUFGRkYDAwMAAAD///9bW1sEBAQICAgODg4LCwtPT08vLy9KSkoqKionJyckJCQcHBwSEhIeHh42NjZDQ0NZWVlUVFRSUlJWVlYtLS0UFBQgICAYGBgyMjIWFhYiIiJAQEBGRkY5OTkaGho8PDw9PT00NDTx8fGnp6fg4OBwcHD9/f3Dw8Pm5ua/v7/U1NTR0dH7+/v29vaHh4erq6u6urpoaGjj4+Ourq59fX1gYGCkpKSQkJB2dnbNzc2BgYGwsLCgoKCFhYWenp6Tk5N5eXltbW2ZmZmWlpaMjIxlZWXu7u63t7e0tLTs7Ozc3Nz4+Pjq6urZ2dno6Oibm5vFxcViYmLz8/PJyclycnJdXV3W1tbIyMgzMzOJiYmMF1/eAAAAEHRSTlMALPvd1JHnoREiv66pOxcTL+sdsgAADEZJREFUeNrt3PdT4twex3F27+7t5fsREkQFwYKFjgihSxEFe++97u7///v9njTBRwhydWXm+tqZ5HA8T8bnPUk2CzPYVF++f/tKHyE+0B/+/I9/2Qx//Qt9FMf4QL/4+7+1Gn/7E32c6YG+8ecv6rnBNT5QqI96iPPjL/ShHJP90+PvfBelDxYc6B//sn0n9nm5aP5h+0YfTZ7sn7uH7St9uJGBvmGjPuAb6xd9kUOemOwTNuoHwfE+0WOOWGOC3lJooj/0ksO+kwTqZCUQCs1Qe6m6h2g0kZCIyU5dtrjuNCwWF509WinuOnvRQ47ZR7ANslIH9qgtN7BDNA1IJASdmh+YdxrWsObsUQ5XvymHswjhgaxUi8hQW/bj3JCZg8Vcqh9Ydhk4h+u11h+XxC6HXVcvXp0jVoDKTRbmcJxDjDppziGH3yQHoObI/6YcUhWqNFlZwH0d+8Q26hHejtT37SSl1tLlbVn9eX3EyGEfW05n1wfC7BrLjWyuXBHjRSyK3cR6/nFxLPwkdZxbWR8Xo3q5wquPzR/uLAJ8/HA4j73adW7eGWau+t1Fdifcldfm2IDGRVYu4PchSWwZ87ytoUxUQSZf1FomEDJyDOEwf4LDcZ/Pd40LnCkoNHjMOXg7lsHpKRIDPsMVkCni5IaHZaTBLp0+zS8Iez5fHhdg+bDPF17BZU4pbPu68coccgKqMlnx45Tsh/jJwzASDqI8xogCg0TuQ4Rac1CYyJHGJv8+aSj7vvE8MmaOH9jy+TaR9el2RCvXHS7UFdgKVxK8QhN2AgfOsMhRbLhWFdyLetmwr4HMe+QYg+o8SlZq+EW0iQUe2jNwUlA0EdzeO+y05mCe2SschUKhNLK8HVNQCYVKKIVC47jkCSeKIV1ZXTcGHIgVOR6voRwyAGNil8c8b3PYDYXOMcnDKm5CXXhljl0IGT9ZyiO7vs6nPrFf2KR77IkytSrY6rMckytg2dl4nM+ROKtiNR7nHPH4NgoZBoTjmiQ2xO5S7Eo44uEu0nEDMC52K9jibZkP5gQyrIBGvAuvzJEFy7rJUhA6Uc6PE3saXvU28lgJHz3PcYPDmmsDWTkW4xwxdorVWIxzxGKrSKRVoZgmg5rYVbEgVhzxcAvpmIFziB3n4O0RH2wcSlr1EOvCK3NcQ8lOUBcayEpsBTViK3ApOd4HoAS4yfMcjxgnOkCWRiNplCKRiO8MB5HIPOYjkQqqkRYr2ORtuICKWHHM4zrSEQMwoS2q8/YYV5GQAleka93lmBqVSTXo1Z6pZ0OxaTt18AMpYjXkiKWQw716mhQkkqvPcxwiTLSILB8/i0On17uOy4jXyzm83tgh9r3N9nESVlfExIpjnqkj6zUUkBI7zsFbzuH1XuMo4u2WzTpFKlsEcPHrJ2mijesCWLF84OjwCD5NbAgY4V2ggMIM7x2XuP51qmChNccakgtZBdfc+Q7nt+Uc0PDqObw1ILdYTm57dbEczpfTUFJeI8d+U44VJO6WxG7fyDF2i+raUW7+TXI4Nm5hyN27SR4/VmDKLNHLBpJZUqWTB8SWk+skxJJQSpWkyJFPRjhbMilx4DSw4kyWictkBtIKMttzbDezK3Y7eQWFi9ScIVQqAvkDbcUyb1czi3OGgQyUnbm5cmaVXyxn9nk7nj2DkqnPdcMix9AjWpwU0GpRpteZkekFHg/phmZnY77ZVnPxZ6/Dkdl2fvpe+FlobrY7nXN4D2El66A3JQ9+pI45ps9hbY/eVrRvc1zDWn6Y3tiw/+N0ynEAa2mJ3po89HE65LBXYelRorc305c5nLBUGKT3EBz+KB1yzP/u26hJ7sccl7CiROl9BEY+SPsco7CUJQuVdVan15seaRav/zgpoJgsr0Y+LEcYllbJwiUEP72aHHziny/AUPAG31X7HAOwdEOdxaGq0etNTRtmc3hyOv2+2ufYgaUJ6mwfqhz1wD2qy4KdpZfXj0+BXX1yMHW8OfoO2udIwdISdVblFFUAQXo9eVTzAFaeVceRLZc2WVeA0u/NcfA/3zt+AtjaBLBNPfC4VSUAp0G3yZwsud+B7X95Cjuy+uAJGB8DcEc9sEfdQg7Avvvjc8zC0pnH4oMnYCoANko6O/+rcZr37oP9rdqE3DQ7zPuZpV9bq2MSaRxRoQpgIdrMHw6XAZTDbEifm57cuLpa2JmNGnzhcJx3k1ubLmOmtlm62vZGO2qfQ4K1BnXg1+6ieQCpps9kkaWpZQXCSUXPoa6UdgsQEsZRPTMsB2AlOtOkhicpdWZ6PwGVchTXF/FEdcZ/Zy5xregr1oZmOrBRW6ewdDhD7dUA/NI+xkw3N865k8+f8gFcTuVhKNm1SgH+Ba/UZdFOOSIXMJ1VtEUnwPn0o7nkvgBDcra3HPOwVrZTW3kAEe2GqgSacpzfATi5BDPusgWgUBZ5MwqEOqkcgUAgUgBbcQZMzTl2+LW/CpZZK52CKUsBgecS++aSJQXA9er2fFEcaybQVoccN+jCsr3TB08Z4yyrkMahV/QTuffAzoLEEhCuOV7glwJA+anX499wA6qVg2hA4x4ZWQSwOMLEnOiobIv/x4MiuIJfz4FD4MfelisQGOIR7gMscg4g1VOOKLqRjtLLGsa1sN/8EXfzxVAzT4RE05lWAZsnzdTUVKAOTfV+Zko3L5bo43GwBW28A7YrRqdgxQdtehfAnjZcApCfasvW8aOjbiS2HW3/ax+xCICCpylHQmq6nE705zWczZAmK17ox3RMsYEMNHnvCzmORamo/mJFHD7AgxzYvTYZveUyQW0cOAcw2FOOHXTl1tHu3Dq0k5BpeoBNANgkXQVsmAdJAMekGweLk0bysGgtqacPe1RqDm0YEEfc9+hSYD4eiBznAW3SCaDs0ZUBPHja6ZTDU0Q3rtq2XJtWLQM4bsqRIt0QmFPPsUq6KbAK6TyqqbEshPPh5zliYE6Pbg4spedY1CdXAVzM66oAGj3kYFvoxk96SRYtzqSnHEvUfGO90XOkyHDb/Fzv8OicVbDd5zkmwAY9OjXlqp5jS5/cxTOrveUYLaDXJ/WAglZjzTkMYJU/5DhpeVNAMgxnAJx4xFDNoc0+gE1LBgXAAu9z+l5b/UxDasdGnWzCWry7v6UXX8ghgU3+IUcRwA79sUcKzP8sh3Z2SLoAWONZjk0AdwtNIpLkeemPVY5oEVZK9KIjAEchXUm94Zo5Dkg3BxYSOZovj2ktksku6bxgMTFaBrCsTcbAJiRdCOzhWY59ACWpC1Y5KAULiSi9RDozrw8WBpswc+yTbhuA4tFzrLe8szBMT2RJEwcbMnIsapNTRQBbkm4DbORZjhsAmTfJYc+is4f27ywWJPMoIsKymaNqPFQkjX/8J5ueRux5AKetcTULAG49YrQH4Ic+ewQg4davlUsAeTESB9mQNMECgKW3yEHRk14uFVpsfZ99GUDCYeTAFqn2YFw5yabn/VWwbTLcVBxklwVnEUBJFsSaoltWjYPNa+NdsIrM1Byybg1AIi53wUYWXAraS3roRY5i072RTYC5zBwo+Yl+roE92s0cOJoj8q+DZWQyZJFYr7gi8ZtFsEJEFibB0j5/WOIXWbD1oCyPqn1XpD/kGCwCOKvP8dATSV31noPdo63EIL1sAixIJrkIYNPMwc4KEIqzZOQQ2QvabMFHBqmAZg1ZFbiFJsovglWwwsXjmVpySH6Wg91AVbxMAFACvedgDRhON2upjbUEdCdeamMZQO75xXNi13PUzSMchsjMsXUOXdFJJh+aFCuyrgZNUGb+C5gu/HJTDtPALZ64es8huJJgid2fpHI8ZCGsjVIbjgSABWryAOYznjv8dxAK86P0lCM1koWgrA1Tk1DpFprzvWHZtF2EoJ0KUxt6ykzNI7fkMAX3DqE53Rq2yGHF7mrchx30xD1emRyl9iRmbzmCxBxPj2H+h8bOhEQa8zFseKCRGp+iZ+z+sYPUwaTf0WJmMrUzMOTQSaGb7VolJjsM4o00j6OZPDdRqSyFRx2d2Oh3MnOYmnN0ZHe8t/7P0ewzR6vPHC3snzla2N9f3+do5rC/85/fniOdz+ed9NwRzw5QH5wetq/UNz68h+Or7Rt99jB9s33/zPHku+0LffYwfeEvyvrsYfin+jVqnz00f/qP9iV7nznUGn8zvoLxswdfKeq5YX5B5/9zj6/fvn+xCf8FN7vXyV8Q9cMAAAAASUVORK5CYII=">
-				<img class="appicon"
-					src="data:image/png;base64,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">
-			</section> -->
+		
 
 			<section>
 				<p>&copy; 2024 Fostered Care. All rights reserved.</p>

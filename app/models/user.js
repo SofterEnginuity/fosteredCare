@@ -8,7 +8,7 @@ var childSchema = mongoose.Schema({
     location:       String,
     allergies     : String,
     medications    : String,
-
+    photo           :String
 })
 const Child = mongoose.model('Child',childSchema)
 
@@ -50,6 +50,7 @@ var userSchema = mongoose.Schema({
         dob          : Date,
         gender       : String,
        familySize    : Number, 
+       photo         : String,
       
         children : [childSchema]     
    

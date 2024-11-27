@@ -28,7 +28,7 @@ Array.from(thumbUp).forEach(function(element) {
 
 document.querySelector('label#email').addEventListener('click', function(event){
  document.querySelector('input#email').value = 'User2@families.com'
- document.querySelector('input#password').value = 'families'
+ document.querySelector('input#password').value = 'famlies'
 })
 
 document.querySelector('label#password').addEventListener('click', function(event){

@@ -10,7 +10,7 @@ lib-cov
 pids
 logs
 results
-
+uploads
 npm-debug.log
 node_modules
 config/database.js

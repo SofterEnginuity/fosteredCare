@@ -3,12 +3,25 @@ const upload = multer({ dest: "uploads/" }); // Directory to save uploads
 const { ObjectId } = require("mongodb");
 var { User, Child } = require("../app/models/user");
 
+
+
+const express = require('express');
+const path = require('path');
+const app = express();
+
+// Serve static files from the "uploads" directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 module.exports = function (app, passport, db) {
   // normal routes ===============================================================
 
   // show the home page (will also have our login links)
   app.get("/", function (req, res) {
-    res.render("index.ejs");
+    res.render("index.ejs", {
+      user: req.user,
+    });
+    
   });
 
   // PROFILE SECTION =========================
@@ -48,7 +61,7 @@ module.exports = function (app, passport, db) {
     console.log(req.user)
 
     db.collection("users")
-      .find({ 'local.userType': "providers" })
+      .find({ 'local.userType': "families" })
       .toArray((err, result) => {
         //go to db and finds all of the
         if (err) return console.log(err); //reading the html
@@ -60,7 +73,7 @@ app.get("/providers", isLoggedIn, (req, res) => {
     // renders provider portal
 
     db.collection("users")
-      .find({ 'local.userType': "families" })
+      .find({ 'local.userType': "providers" })
       .toArray((err, result) => {
         //go to db and finds all of the
         if (err) return console.log(err); //reading the html
@@ -103,7 +116,7 @@ app.get("/providers", isLoggedIn, (req, res) => {
       { $set: { photo: photoPath } },
       (err, result) => {
         if (err) return res.status(500).json({ success: false, error: err });
-        // res.redirect(req.user.local.local.userType === "families" ? '/providers' : '/families')
+     
         res.redirect("/profile");
       }
     );
@@ -112,7 +125,7 @@ app.get("/providers", isLoggedIn, (req, res) => {
   app.delete("/messages", (req, res) => {
     const itemId = req.body._id;
 
-    db.collection("Crud1").findOneAndDelete(
+    db.collection("users").findOneAndDelete(
       { _id: new ObjectId(itemId) },
       (err, result) => {
         if (err) return res.status(500).send(err);
@@ -205,6 +218,7 @@ app.get("/providers", isLoggedIn, (req, res) => {
     newChild.gender = req.body.childGender
     newChild.allergies = req.body.childAllergies
     newChild.medications = req.body.childMedications
+    
     req.user.local.children.push(newChild)
     req.user.save()
     console.log('add child', req.body)
@@ -239,6 +253,15 @@ app.get("/providers", isLoggedIn, (req, res) => {
         }
       );
   });
+
+  app.get("/singleListing/<%= users[i]._id %>", function (req, res) {
+    res.render("singleListing.ejs");
+  });
+
+  app.get("/singleListing/<%= users[i].userType%>", function (req, res) {
+    res.render("singleListing.ejs");
+  });
+
 
 
 

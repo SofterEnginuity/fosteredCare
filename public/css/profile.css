@@ -14,13 +14,37 @@ body {
     font-weight: 400;
     font-style: normal;
   } */
-.main{
+main{
   display: flex;              /* Flexbox on the container */
   flex-grow: 1;               /* Make it grow to fill available space */
   justify-content: space-between;
-  height:100vh;
-}
 
+}
+.userbio{
+  display:flex;
+}
+.row{
+width:100%;
+
+}
+.childform{
+  margin-right: 3%;
+  margin-left: 3%;
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  align-content: flex-end;
+  align-items: flex-end;
+}
+.top{
+  display:flex;    
+  justify-content: space-around;
+}
+.topimg{
+  display: flex;
+  width: 50%;
+  padding: 30px;
+}
  li{
 width: 80%;
 height:400px;
@@ -28,6 +52,11 @@ list-style:none;
 display:flex;
 flex-direction:column;
   }
+
+  .topimg img{
+    width:100%;
+  }
+
   #form{
   width:100%;
 }
@@ -36,7 +65,7 @@ flex-direction:column;
   }
 .col-sm-6{
   height:auto;
-  width:100%;
+  width:50%;
 }
 .jumbo{
   padding:none;
@@ -52,9 +81,12 @@ flex-direction:column;
   padding:none;
 }
 form{
-    width: 20%;
-    /* text-align: center; */
-    margin-left: 45px;
+  display: flex;
+  width: 100%;
+  text-align: right;
+ 
+  flex-direction: column;
+  justify-content: flex-start;
 }
   header{
     background-color: rgb(228, 237, 251);
@@ -66,6 +98,7 @@ form{
 .user-section{
   display:flex;
   flex-direction:column;
+  width:100%;
 
 }
 .user span{
@@ -82,26 +115,43 @@ form{
 }
 
 .children {
-  display:flex;
-  flex-direction:column;
-  width:50%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 .child{
+  width:50%;
   display: flex;
   flex-direction: column;
-  font-size:24px;outline:black;
+  font-size:24px;
+  justify-content: center;
+  outline:black;
+}
+.childimg{
+  width: 80%;
+    vertical-align: middle;
+    border-style: none;
+    padding: 10px;
+}
+.childbio{
+  border-radius: 35px;
+  border: 2px solid rgb(228, 237, 251);
+  display: flex;
+  flex-direction: row;
 }
 .row{
   display:flex;
 
  justify-content: space-between;
 }
-footer{
+/* footer{
   display:flex;
   align-items:flex-end;
-}
+} */
   .footer{
-
+    margin-top: auto; 
     background-color: rgb(228, 237, 251);
     color: white;
     padding: 1em;
