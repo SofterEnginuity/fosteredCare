@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Fostered Care</title>
-
+		<link rel="stylesheet"
+		href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
 		<link rel="stylesheet"
 			href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -24,10 +25,12 @@
 			<div class="jumbotron text-center">
 				<%if(user===undefined){%>
 				
-				<a href="/login" class="btn btn-default"><span
-						class="fa fa-user"></span>Login</a>
-				<a href="/signup" class="btn btn-default"><span
-						class="fa fa-user"></span>Signup</a>
+					<a href="/login" class="btn btn-default btn-sm fa fa-user">
+						Sign In</a>
+						<a href="/signUp" class="btn btn-default btn-sm fa fa-user">
+							Sign Up</a>
+				
+				
 <%}else{%>
 	<a href="/profile" class="btn btn-default"><span
 		class="fa fa-user"></span>Profile</a>
@@ -43,10 +46,7 @@
 			<div class="intro">
 				<section class="introduction">
 					<h1> Fostered Care</h1>
-					<h3>A place you can call home</h3>
-					<p>Our company takes pride in hosting a centralized place for licensed
-						respite care providers, giving families of all dynamics access to
-						trustworthy, professional support tailored to their unique needs.</p>
+					<p>Empowering Families, Enriching Futures</p>
 				</section>
 				<!-- <section><img class="intropic"
 								src="https://placehold.co/150X150">
@@ -59,23 +59,20 @@
 						<img class="imgmain" src="img/carol.jpg">
 					</div>
 					<div class="firstleft">
-						<h3>First</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-							dolore voluptatum, aut officiis reprehenderit et autem. Aspernatur
-							fugi?</p>
+						<!-- <h3>First</h3> -->
+						<p>We take pride in providing exceptional respite care for foster, adopted, and kinship youth. Connecting families with a network of experienced, state-approved providers who are equipped to meet the diverse needs of all family dynamics and cultural backgrounds.</p>
 					</div>
 				</section>
 
 				<section class="second">
 					<div class="div1">
-
+		
 						<img src="img/multiethnic.jpg">
 					</div>
 					<div class ="div2">
-						<h3>Second</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-							dolore voluptatum, aut officiis reprehenderit et autem. Aspernatur
-							fugi?</p>
+						<!-- <h3>Second</h3> -->
+						<p>In partnership with the Department of Human Services (DHS) in Philadelphia, we ensure families have access to a safe, nurturing environment for their children, allowing them the time they need to recharge. Whether it's a one-time need or recurring support,</p>
+					  </p>
 					</div>
 				</section>
 				<!-- <section class="third">

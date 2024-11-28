@@ -23,10 +23,13 @@ body {
 main{
   flex:1;
 }
-.midsignup{
-  display:flex;
-  justify-content:space-evenly;
-
+.midsignup {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: baseline;
+  /* height: 100vh; */
+  margin-top: 10%;
 }
 .col-sm-offset-3 {
   margin-left: 1px;

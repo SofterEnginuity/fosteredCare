@@ -9,7 +9,7 @@ const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
-
+const { Server } = require("socket.io");
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -58,5 +58,22 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // launch ======================================================================
-app.listen(port);
+
 console.log('The magic happens on port ' + port);
+const server = require('https').createServer(app)
+const io = require('socket.io')(server)
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+
+  // Handle other custom events here
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg); // Broadcast the message to all clients
+  });
+});
+app.set('socketio', io)
+app.listen(port);

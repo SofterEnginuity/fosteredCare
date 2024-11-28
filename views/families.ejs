@@ -27,6 +27,7 @@
                                     <section>
                            
                                         <p><a href="/profile">My Account</a></p>
+                                        <button onclick="goBack()">Go Back</button>
                                         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
                                     </section>
                                 </div>
@@ -40,7 +41,7 @@
 
             <main>
                 
-                <h3>Find a provider that will fit all of your families needs!!</h3>
+                <h3>Find a family to foster !</h3>
 
                      <div>
                     <% for(var i=0; i<users.length; i++){ %>
@@ -51,19 +52,24 @@
                                             href="/singleListing/<%= users[i]._id %>"><%=
                                             users[i].local.name %></a></h1>
 
+                                            <% if (users[i].userType === 'families') { %>
+                                                <!-- If the user is a family, show the providers -->
+                                                <p>Providers: <%= users[i].providers %></p>
+                                            <% } else { %>
+                                                <!-- If the user is not a family (assuming they are a provider), show the families -->
+                                                <p>Families: <%= users[i].families %></p>
+                                            <% } %>
                                             
-                                 <p class="userType"><%=users[i].userType %></p> 
-                                        <img src="<%= users[i].photo %>" alt="Uploaded photo" width="100px" height="auto">
+                                            <p class="userType"><%= users[i].userType %></p> 
+                                            <img class="listimg" src="<%= users[i].local.photo %>" alt="Uploaded photo" width="100px" height="auto">      
+                                
                                         <% } %>
                                 </section>
                                 <section>
 
-                                    <img class="listimg"
-                                        src="https://i.imgur.com/J13ThPK.png">
+                                 
                                 </section>
-                                <section>
-                                    <i class="fa-solid fa-person"></i>
-                                </section>
+                                
 
                             </div>
                        

@@ -2,63 +2,23 @@ var thumbUp = document.getElementsByClassName("fa-thumbs-up");
 var thumbDown = document.getElementsByClassName("fa-thumbs-down");
 var trash = document.getElementsByClassName("fa-trash-o");
 
-Array.from(thumbUp).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg,
-            'thumbUp':thumbUp
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
 
-document.querySelector('label#email').addEventListener('click', function(event){
- document.querySelector('input#email').value = 'User2@families.com'
- document.querySelector('input#password').value = 'famlies'
+
+document.querySelector('label#email')?.addEventListener('click', function(event){
+ document.querySelector('input#email').value = 'amanda.hoover@families.com'
+ document.querySelector('input#password').value = 'families'
 })
 
-document.querySelector('label#password').addEventListener('click', function(event){
-  document.querySelector('input#email').value = 'User2@providers.com'
+document.querySelector('label#password')?.addEventListener('click', function(event){
+  document.querySelector('input#email').value = 'rebecca.adams@providers.com'
   document.querySelector('input#password').value = 'providers'
 })
 
-Array.from(thumbDown).forEach(function(element) {
-  element.addEventListener('click', function(){
-    const name = this.parentNode.parentNode.childNodes[1].innerText
-    const msg = this.parentNode.parentNode.childNodes[3].innerText
-    const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-    fetch('messages2', {
-      method: 'put',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        'name': name,
-        'msg': msg,
-        'thumbUp':thumbUp
-      })
-    })
-    .then(response => {
-      if (response.ok) return response.json()
-    })
-    .then(data => {
-      console.log(data)
-      window.location.reload(true)
-    })
-  });
-});
+
+
+ 
+
+
 
 
 
@@ -84,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           span.innerHTML = newValue; // Update UI
 
           // Send PUT request to update the field in the database
-          fetch('/messages', {
+          fetch('/profile', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -101,26 +61,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.querySelectorAll('.delete-icon').forEach(element => {
-  element.addEventListener('click', function() {
-    const itemId = this.dataset.id;
-
-    fetch('/messages', {
+document.querySelector('.delete').addEventListener('click', function() {
+    fetch('/profile', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ _id: itemId })
     })
     .then(response => {
       if (response.ok) {
-        window.location.reload();
+        console.log(response.body)
       } else {
         console.error('Failed to delete the item.');
       }
     });
   });
-});
 
 
 

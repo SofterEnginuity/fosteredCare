@@ -7,6 +7,7 @@
     "body-parser": "^1.18.3",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.4.3",
+    "date-fns": "^4.1.0",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-session": "^1.15.6",
@@ -22,6 +23,7 @@
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
     "passport-twitter": "^0.1.5",
-    "savage": "^0.2.2"
+    "savage": "^0.2.2",
+    "socket.io": "^4.8.1"
   }
 }

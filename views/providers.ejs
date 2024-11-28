@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Providers</title>
         <link rel="stylesheet" href="css/families.css">
+        <link rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,34 +18,21 @@
     </head>
     <body>
 
-        <header>
-
-            <div>
-                <nav id="nav">
-                    <nav id="nav">
-                        <ul>
-                           
-
-                            <li>
-                                <div class="profile">
-                                    <section>
-
-                                        <p><a href="/profile">My Account</a></p>
-                                        <a href="/logout"
-                                            class="btn btn-default btn-sm">Logout</a>
-                                    </section>
-                                </div>
-
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
+        <section class="headernav">
+            <div class="back">
+              <a onclick="goBack()" href="/logout" class="btn btn-default btn-sm">Go Back</a>
+              </div>
+              <div class="out">
+                <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+        
+            </div>
+            </section>
+    
             </header>
 
             <main>
 
-                <h3>Find a family to foster !</h3>
+                <h3>Find a provider that will fit all of your families needs!!</h3>
 
                 <div>
                     <!-- <% for(var i=0; i<users.length; i++){ %> -->
@@ -50,15 +41,24 @@
                                 <section section class="srow1">
                                     <h1 class="name"><a
                                             href="/singleListing/<%= users[i]._id %>"><%=
-                                            users[i].name %></a></h1>
-                                    <p class="userType"><%=users[i].userType %></p>
-                                        <img src="<%= users[i].photo %>" alt="Uploaded photo" width="100px" height="auto">
+                                            users[i].local.name %></a></h1>
+                                                          
+                                            <% if (users[i].userType === 'families') { %>
+                                                <!-- If the user is a family, show the providers -->
+                                                <p>Providers: <%= users[i].providers %></p>
+                                            <% } else { %>
+                                                <!-- If the user is not a family (assuming they are a provider), show the families -->
+                                                <p>Families: <%= users[i].families %></p>
+                                            <% } %>
+                                    
+
+                                            <p class="userType"><%=users[i].userType %></p>
+                                        <img class="listimg" src="<%= users[i].local.photo %>" alt="Uploaded photo" width="100px" height="auto">
 
                                 </section>
                                 <section>
 
-                                    <img class="listimg"
-                                        src="https://i.imgur.com/J13ThPK.png">
+
                                 </section>
                              
 
@@ -67,13 +67,11 @@
                                 enctype="multipart/form-data">
 
                                 <input type="file" name="photo" id="file<%= i %>" style="display:none" />
-                                <!-- <label for="file<%= i %>">Choose a
-                                    file</label>
-                                <button type="submit">Upload</button> -->
+                            
                             </form>
                             <!-- Display uploaded photo if it exists -->
                             <% if (users[i].photo) { %>
-                            <img src="<%= users[i].photo %>"
+                            <img src="<%= users[i].local.photo %>"
                                 alt="Uploaded photo"
                                 width="100px" height="auto">
                             <% } %>

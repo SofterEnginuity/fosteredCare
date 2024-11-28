@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Profile</title>
+    <!-- <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/"> -->
     <link rel="stylesheet"
       href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -18,13 +19,15 @@
 		<header>
 
 
-        <section>
-          <p class="notable-regular"><a
-              href="/">Back</a></p>
-          
-         
-          <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-      </section>
+        <section class="headernav">
+        <div class="back">
+          <a onclick="goBack()" href="/logout" class="btn btn-default btn-sm">Go Back</a>
+          </div>
+          <div class="out">
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+          <a href="/logout" class="delete btn btn-default btn-sm">Delete Account</a>
+        </div>
+        </section>
 
 		</header>
     <main>
@@ -38,18 +41,58 @@
               <ul class="messages">
                <li class="message">
                  <section class="user user-section">
-                    <h2><span class="name">Username:<%= user.local.name %></span></h2>
-                    <span class="user">Email:<%= user.local.email %></span>
-                   <span class="user">Location:<%= user.local.location %></span>
-                    <span class="user">Gender:<%= user.local.gender %></span> 
-                    <span class="user">Date of Birth:<%= user.local.dob %></span>
+            
+                  <span class="editable name" data-id="<%= user._id %>"
+                      data-field="name">
+                    <i class="fa fa-edit edit-icon"
+                      data-id="<%= user._id %>"
+                      data-field="name" aria-hidden="true"></i>
+                    <%= user.local.name %></span>
                     
-                    <span class="user">Family Size:<%= user.local.familySize %></span>
+                      <label>Gender:</label>
+                      <span class="editable gender" data-id="<%= user._id %>"
+                        data-field="gender"><%= user.local.gender %></span>
+                      <i class="fa fa-edit edit-icon"
+                        data-id="<%= user._id %>"
+                        data-field="gender" aria-hidden="true"></i><br>
+
                     
-                     <% if (user.photo) { %>
-                    <img src="<%= user.photo %>" alt="Uploaded photo"
-                      width="100px" height="auto">
-                    <% } %>
+                  <label>Family Size:</label>
+                    <span class="editable user" data-id="<%= user._id %>"
+                      data-field="familySize"><%= user.local.familySize %></span>
+                    <i class="fa fa-edit edit-icon"
+                      data-id="<%= user._id %>"
+                      data-field="familySize" aria-hidden="true"></i><br>
+
+                   
+                 
+                      <span class="editable location" data-id="<%= user._id %>"
+                        data-field="location">
+                      <i class="fa fa-edit edit-icon"
+                        data-id="<%= user._id %>"
+                        data-field="location" aria-hidden="true"></i>
+                      <%= user.local.location %></span>
+                   
+                   
+                   <label>Date of Birth:</label>
+                      <span class="editable dob" data-id="<%= user._id %>"
+                        data-field="dob"><%= user.local.dob.toDateString() %></span>
+                      <i class="fa fa-edit edit-icon"
+                        data-id="<%= user._id %>"
+                        data-field="dob" aria-hidden="true"></i><br>
+                   
+                 
+                        <!-- <span class="editable email" data-id="<%= user._id %>"
+                          data-field=emaile">
+                        <i class="fa fa-edit edit-icon"
+                          data-id="<%= user._id %>"
+                          data-field="email" aria-hidden="true"></i>
+                        <%= user.local.email %></span> -->
+
+
+
+                        
+                    
                   <form action="/uploadPhoto" method="POST"
                       enctype="multipart/form-data">
                       <input type="file" required name="photo" id="file"
@@ -62,7 +105,10 @@
                   </section>
              </div>
             <div class="topimg">
-              <img src="uploads/1a32d928cf0ccb1f76ed7acb1657dbf7">
+             <% if (user.local.photo) { %>
+                    <img src="<%= user.local.photo %>" 
+                      width="100px" height="auto">
+                    <% } %>
             </div>
 </section>
                   
@@ -78,7 +124,7 @@
       </div>
       <section class="childform">
         <h2>Add a Child</h2>
-        <form action="/addChild" method="POST">
+        <form action="/addChild" method="POST" enctype="multipart/form-data">
           
           <div class="form-group">
             <label for="exampleFormControlInput1">Name</label>
@@ -102,7 +148,7 @@
           <div class="form-group">
             <label for="exampleFormControlSelect1">Allergies</label>
             <select class="form-control" id="exampleFormControlSelect1" name="childAllergies">
-              <option></option>
+              <option>N/A</option>
               <option value="egg">Egg</option>
               <option value="fish">Fish</option>
               <option value="dairy">Dairy</option>
@@ -114,27 +160,17 @@
               <option value="other">Other</option>
               </select >
           </div>
-
+          
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Medications:</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="childMedications"></textarea>
-          </div>
-              <button>Add Child</button>
-          </form>
-          
-          <form action="/uploadPhoto" method="POST"
-          enctype="multipart/form-data">
           <input type="file" required name="photo" id="file"
-            class="inputfile" />
-          <input hidden name="id" value="<%= user._id %>"></input>
-        <label for="file"></label>
-        <button type="submit">Upload</button>
-        </form>
+          class="inputfile" />
+        </div>
+<button>Add Child</button>
+              </form>
   
-        <% if (user.photo) { %>
-        <img src="<%= user.photo %>" alt="Uploaded photo"
-          width="100px" height="auto">
-        <% } %>
+       
       </section>
     </section>
 
@@ -144,15 +180,28 @@
       <% for(let i =0; i < user.local.children.length; i++){ %> 
         <section class="childbio">
     <section class="child">  
-     
+<!-- 
+   <label>Name:</label>
+      <span class="editable children[i].name" data-id="<%= user._id %>"
+        data-field="children[i].name"><%= user.local.children[i].name %></span>
+      <i class="fa fa-edit edit-icon"
+        data-id="<%= user._id %>"
+        data-field="children[i].name" aria-hidden="true"></i><br> -->
   
-      <h3 class="kids">Child<%=i+1%></h3>
-        <span class="kids">Name:<%= user.local.children[i].name %></span>
+      <span class="kids"><%= user.local.children[i].name %></span>
         
-        <span class="kids">Gender:<%= user.local.children[i].gender %></span>
+        <span class="kids"><%= user.local.children[i].gender %>
+        </span><span class="kids">Allergies: <%= user.local.children[i].allergies%></span>
         <span class="kids">Medications:<%= user.local.children[i].medications %></span>
-        <span class="kids">Allergies: <%= user.local.children[i].allergies%></span>
-        <span class="kids">Allergies: <%= user.local.children[i].photo%></span>
+        
+        </section>
+        
+        
+        <section class="imgdivchild">
+  
+        <img class="chldimg" src="<%= user.local.children[i].photo%>" alt="Uploaded photo"
+          width="100px" height="auto">
+ </section>
 </section> 
 
 <%}%>
