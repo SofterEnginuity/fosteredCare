@@ -51,6 +51,7 @@ var userSchema = mongoose.Schema({
         gender       : String,
        familySize    : Number, 
        photo         : String,
+       bio           :String,
       
         children : [childSchema]     
    

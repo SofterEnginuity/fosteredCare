@@ -17,7 +17,9 @@ document.querySelector('label#password')?.addEventListener('click', function(eve
 
 
  
-
+function goBack() {
+  history.back(); // Navigate to the previous page
+}
 
 
 

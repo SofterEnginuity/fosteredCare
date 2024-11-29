@@ -21,8 +21,9 @@
 
         <section class="headernav">
         <div class="back">
-          <a onclick="goBack()" href="/logout" class="btn btn-default btn-sm">Go Back</a>
-          </div>
+          <a onclick="goBack()" href="javascript:void(0);" class="btn btn-default btn-sm">Go Back</a>
+          
+        </div>
           <div class="out">
             <a href="/logout" class="btn btn-default btn-sm">Logout</a>
           <a href="/logout" class="delete btn btn-default btn-sm">Delete Account</a>
@@ -48,24 +49,27 @@
                       data-id="<%= user._id %>"
                       data-field="name" aria-hidden="true"></i>
                     <%= user.local.name %></span>
+
                     
-                      <label>Gender:</label>
+                     
                       <span class="editable gender" data-id="<%= user._id %>"
-                        data-field="gender"><%= user.local.gender %></span>
+                        data-field="gender">
                       <i class="fa fa-edit edit-icon"
                         data-id="<%= user._id %>"
-                        data-field="gender" aria-hidden="true"></i><br>
+                        data-field="gender" aria-hidden="true"></i>
+                        <%= user.local.gender %></span>
 
                     
                   <label>Family Size:</label>
                     <span class="editable user" data-id="<%= user._id %>"
-                      data-field="familySize"><%= user.local.familySize %></span>
+                      data-field="familySize">
                     <i class="fa fa-edit edit-icon"
                       data-id="<%= user._id %>"
-                      data-field="familySize" aria-hidden="true"></i><br>
+                      data-field="familySize" aria-hidden="true"></i>
+                      <%= user.local.familySize %></span>
 
                    
-                 
+                 <label>Location:</label>
                       <span class="editable location" data-id="<%= user._id %>"
                         data-field="location">
                       <i class="fa fa-edit edit-icon"
@@ -76,12 +80,21 @@
                    
                    <label>Date of Birth:</label>
                       <span class="editable dob" data-id="<%= user._id %>"
-                        data-field="dob"><%= user.local.dob.toDateString() %></span>
+                        data-field="dob">
                       <i class="fa fa-edit edit-icon"
                         data-id="<%= user._id %>"
-                        data-field="dob" aria-hidden="true"></i><br>
+                        data-field="dob" aria-hidden="true"></i>
+                        <%= user.local.dob.toDateString() %></span>
                    
-                 
+                        <label>Bio:</label>
+                        <span class="editable bio" data-id="<%= user._id %>"
+                          data-field="bio">
+                        <i class="fa fa-edit edit-icon"
+                          data-id="<%= user._id %>"
+                          data-field="bio" aria-hidden="true"></i>
+                        <%= user.local.bio %></span>
+
+
                         <!-- <span class="editable email" data-id="<%= user._id %>"
                           data-field=emaile">
                         <i class="fa fa-edit edit-icon"
@@ -180,13 +193,10 @@
       <% for(let i =0; i < user.local.children.length; i++){ %> 
         <section class="childbio">
     <section class="child">  
-<!-- 
-   <label>Name:</label>
-      <span class="editable children[i].name" data-id="<%= user._id %>"
-        data-field="children[i].name"><%= user.local.children[i].name %></span>
-      <i class="fa fa-edit edit-icon"
-        data-id="<%= user._id %>"
-        data-field="children[i].name" aria-hidden="true"></i><br> -->
+
+   
+
+      
   
       <span class="kids"><%= user.local.children[i].name %></span>
         
@@ -222,11 +232,12 @@
 				<p>&copy; 2024 Fostered Care. All rights reserved.</p>
 			</section>
 		</footer>
-      <script type="text/javascript" src="js/main.js"></script>
+      
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
+    <script type="text/javascript" src="js/main.js"></script>
     <script src="js/main.js"></script>
 
   </body>

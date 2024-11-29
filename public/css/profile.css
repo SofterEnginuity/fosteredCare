@@ -9,6 +9,8 @@ body {
     flex-direction: column;
    height:100%
   }
+
+
   /* .notable-regular {
     font-family: "Notable", sans-serif !important;
     font-weight: 400;
@@ -20,13 +22,18 @@ main{
   justify-content: space-between;
 
 }
+label{
+  font-size:1.5em;
+}
 .userbio{
   display:flex;
+  width:75%;
 }
 .row{
 width:100%;
 
 }
+
 .back{
   width:6%;
 }
@@ -59,7 +66,7 @@ width:100%;
   padding: 30px;
 }
  li{
-width: 80%;
+width: 100%;
 
 list-style:none; 
 display:flex;
@@ -175,6 +182,7 @@ form{
   align-items:flex-end;
 } */
   .footer{
+
     margin-top: auto; 
     background-color: rgb(228, 237, 251);
     color: white;

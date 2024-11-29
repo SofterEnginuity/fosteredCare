@@ -17,31 +17,54 @@ body {
   width:75px;
   height:75px;
 }
+h3{
+  font:24px;
+  text-align:center;
 
-header{
-  background-color: rgb(228, 237, 251);
-  color: white;
-  padding: 1em;
-  text-align: center;
-  height:5em;
+}
+
+:root {
+  --header-height: 80px;
+  --header-bg-color: #4CAF50;
+}.site-header {
+  height: 80px; /* Set a consistent height */
+  background-color: #4CAF50; /* Set your desired background color */
+  color: white; /* Optional: Style text color */
+  display: flex; /* Center content vertically */
+  align-items: center; /* Center content vertically */
+  padding: 0 20px; /* Add some horizontal padding */
+  box-sizing: border-box; /* Ensure padding doesn't affect the height */
 }
 
 
+.headernav{
+  display:flex;
+}
+
+
+
+
+.main{
+  display:flex;
+  flex-direction: column;
+}
+main {
+ display:flex;  
+ text-align: center;
+  flex-grow: 1;
+  height:100%;
+}
 main{
+
   text-align:center;
     flex-grow:1;
   }
 
 
-  .footer{
-      background-color: rgb(228, 237, 251);
-      color: white;
-      padding: 1em;
-      text-align: center;
-      width: 100%;
-      bottom: 0;
-    }
-   
+   .usercont{
+    display: flex;
+    flex-wrap: wrap;
+   }
 
 ul{
   display: flex;
@@ -56,25 +79,30 @@ header {
   color: white;
 
   text-align: center;
-  height:5em;
+  height:10vh;;
 }
+.headernav{
+  display:flex;
+  justify-content: space-between;
+  }
+  .menu{
+    display:flex;
+  }
 p{
-  margin-bottom:10px;
+  margin-bottom:10px; 
 }
 .top{
   height:10vh;
 
 }
-main {
-  text-align: center;
-  flex-grow: 1;
-}
+
 
 .listimg {
   width: 350px;
   height: 250px;
   border-radius: 25px;
 }
+
 
 .drow1 {
   width: 50%;
@@ -92,7 +120,7 @@ main {
 
 .srow1 {
   width: 50%;
-
+  margin-bottom: 40px;
 }
 
 

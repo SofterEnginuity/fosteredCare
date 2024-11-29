@@ -98,22 +98,8 @@ module.exports = function (app, passport, db) {
     console.log(req.body)
     const io = req.app.get('socketio')
     // console.log(io)
-// io.on('connection',socket => {
-//   console.log('connected')
-//   socket.emit('chat message')
-// })
-// const socket = io()
-// socket.emit('chat message')
+
   });
-    // db.collection("users").findOne(
-    //   { _id: ObjectId(req.params.id) },
-    //   (err, result) => {
-    //     //go to db and finds all of the
-    //     if (err) return console.log(err); //reading the html
-    //     console.log(result);
-    //     res.render("singleListing.ejs", { user: result });
-    //   }
-    // );
 
   //photo upload
 
@@ -224,7 +210,7 @@ module.exports = function (app, passport, db) {
       { returnDocument: "after" },
       (err, result) => {
         if (err) return res.send(err);
-        res.send(result);
+        res.redirect('/profile');
       }
     );
   });

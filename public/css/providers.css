@@ -3,6 +3,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  height:100%;
   min-height: 100vh;
 }
 /* .notable-regular {
@@ -18,20 +19,18 @@ body {
   height:75px;
 }
 
-header{
-  background-color: rgb(228, 237, 251);
-  color: white;
-  padding: 1em;
-  text-align: center;
-  height:10vh;
-}
+
 .headernav{
   display:flex;
+
 }
 
 main{
   text-align:center;
+  display:flex;
     flex-grow:1;
+    height:100%;
+    
   }
 
 
@@ -56,10 +55,17 @@ ul{
 header {
   background-color: rgb(228, 237, 251);
   color: white;
-
   text-align: center;
-  height:5em;
+  height:10vh;
 }
+.headernav{
+  display:flex;
+  justify-content: space-between;
+  }
+  .menu{
+    display:flex;
+    flex-wrap:wrap;
+  }
 p{
   margin-bottom:10px;
 }
@@ -67,6 +73,8 @@ p{
   height:10vh;
 
 }
+
+
 main {
   text-align: center;
   flex-grow: 1;
@@ -79,7 +87,7 @@ main {
 }
 
 .drow1 {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

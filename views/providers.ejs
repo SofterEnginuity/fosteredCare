@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Providers</title>
-        <link rel="stylesheet" href="css/families.css">
+        <link rel="stylesheet" href="css/providers.css">
         <link rel="stylesheet"
-      href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet"
-      href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+            href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet"
+            href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,90 +17,85 @@
             rel="stylesheet">
     </head>
     <body>
+        <header>
+            <section class="headernav">
+                <div class="back">
+                    <a onclick="goBack()" href="/logout"
+                        class="btn btn-default btn-sm">Go Back</a>
+                </div>
+                <div class="out">
+                    <a href="/profile"
+                        class="btn btn-default btn-sm">Profile</a>
 
-        <section class="headernav">
-            <div class="back">
-              <a onclick="goBack()" href="/logout" class="btn btn-default btn-sm">Go Back</a>
-              </div>
-              <div class="out">
-                <a href="/profile" class="btn btn-default btn-sm">Profile</a>
-        
-            </div>
+                </div>
             </section>
-    
-            </header>
 
-            <main>
+        </header>
 
-                <h3>Find a provider that will fit all of your families needs!!</h3>
+        <main class="main">
 
-                <div>
-                    <!-- <% for(var i=0; i<users.length; i++){ %> -->
-                        <div class="row1">
-                            <div class="drow1">
-                                <section section class="srow1">
-                                    <h1 class="name"><a
-                                            href="/singleListing/<%= users[i]._id %>"><%=
-                                            users[i].local.name %></a></h1>
-                                                          
-                                            <% if (users[i].userType === 'families') { %>
-                                                <!-- If the user is a family, show the providers -->
-                                                <p>Providers: <%= users[i].providers %></p>
-                                            <% } else { %>
-                                                <!-- If the user is not a family (assuming they are a provider), show the families -->
-                                                <p>Families: <%= users[i].families %></p>
-                                            <% } %>
-                                    
+            <h3>Find a provider that will fit all of your families needs!!</h3>
 
-                                            <p class="userType"><%=users[i].userType %></p>
-                                        <img class="listimg" src="<%= users[i].local.photo %>" alt="Uploaded photo" width="100px" height="auto">
+            <div class="menu"
+          >
+                <% for(var i=0; i<users.length; i++){ %>
+                    <div class="row1">
+                        <div class="drow1">
+                            <section section class="srow1">
+                                <h1 class="name"><a
+                                        href="/singleListing/<%= users[i]._id %>"><%=
+                                        users[i].local.name %></a></h1>
 
-                                </section>
-                                <section>
+                                <% if (users[i].userType === 'families') { %>
 
+                                <p>Providers: <%= users[i].providers %></p>
+                                <% } else { %>
 
-                                </section>
-                             
+                                <p>Families: <%= users[i].families %></p>
+                                <% } %>
 
-                            </div>
-                            <form action="/uploadPhoto" method="POST"
-                                enctype="multipart/form-data">
+                                <img class="listimg"
+                                    src="<%= users[i].local.photo %>"
+                                    alt="Uploaded photo" width="100px"
+                                    height="auto">
 
-                                <input type="file" name="photo" id="file<%= i %>" style="display:none" />
-                            
-                            </form>
-                            <!-- Display uploaded photo if it exists -->
-                            <% if (users[i].photo) { %>
-                            <img src="<%= users[i].local.photo %>"
-                                alt="Uploaded photo"
-                                width="100px" height="auto">
-                            <% } %>
+                            </section>
+                            <section>
+ 
+                            </section>
+
                         </div>
+                     
+
+                        </form>
+
+                        <% if (users[i].photo) { %>
+                        <img src="<%= users[i].local.photo %>"
+                            alt="Uploaded photo"
+                            width="100px" height="auto">
                         <% } %>
                     </div>
-                    <!-- <label for="Age">Select an Age</label> -->
-
-                    <div class="col-sm-6">
-         
-
-                    </div>
+                    <% } %>
                 </div>
-            </main>
 
-            <footer class="footer">
-                <ul class="footernav">
-                    <a href="#">Our Mission</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Contact Us</a>
-                </ul>
-                <section>
-                    <p>&copy; 2024 Fostered Care. All rights reserved.</p>
-                </section>
+         
+            </div>
+        </main>
 
-            </footer>
-            <script src="js/main.js"></script>
-            <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
-                crossorigin="anonymous"></script>
+        <footer class="footer">
+            <ul class="footernav">
+                <a href="#">Our Mission</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </ul>
+            <section>
+                <p>&copy; 2024 Fostered Care. All rights reserved.</p>
+            </section>
 
-        </body>
-    </html>
+        </footer>
+        <script src="js/main.js"></script>
+        <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
+            crossorigin="anonymous"></script>
+
+    </body>
+</html>

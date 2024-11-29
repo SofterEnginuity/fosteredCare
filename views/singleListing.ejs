@@ -31,13 +31,15 @@
                           
                            
                                 <div class="profile">
-                                    <section>
-                                        <p class="notable-regular"></p><a
-                                            href="/">Back</a></p>
-                                        <!-- <p class="notable-regular"><a
-                                                href="/profile">Home</a></p> -->
-                                        <p><a href="/profile">My Account</a></p>
+                                    <section class="menu">
+
+                                        <div class="back">
+                                            <a onclick="goBack()" href="javascript:void(0);" class="btn btn-default btn-sm">Go Back</a>
+                                        </div>
+                                        <div>
+                                        <a href="/profile" class="btn btn-default btn-sm">My Account</a>
                                         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+                                    </div>
                                     </section>
 
                                     
@@ -63,43 +65,49 @@
                                 <section class="srow1">
 
                                     <h1><%= user.local.name %></h1>
-                                    <h1><%= user.local.gender %></h1>
+                           
+                                
+                                    
                                     <!-- <p><%= user.local.userType %></p> -->
-                              
+                                    
 
-                                </section>
-                                <section class="imgsec">
+                               
                                     <img class="listimg"
-                                        src="https://i.imgur.com/J13ThPK.png">
+                                        src="<%= user.local.photo %>">
                                 </section>
-                              <section>
+
+</div>
+
+
+<section class="kiddos">
 
                                 
       <div class="children">   
         <% for(let i =0; i < user.local.children.length; i++){ %> 
           <section class="childbio">
+
+
       <section class="child">  
-       
-    
-        <h3 class="kids">Child<%=i+1%></h3>
-          <span class="kids">Name:<%= user.local.children[i].name %></span>
-          <!-- <span class="kids">Age:<%= user.local.children[i].dob %></span> -->
-          <span class="kids">Gender:<%= user.local.children[i].gender %></span>
-          <span class="kids">Medications:<%= user.local.children[i].medications %></span>
-          <span class="kids">Allergies: <%= user.local.children[i].allergies%></span>
+          <span class="kids"><%= user.local.children[i].name %></span>
+          <span class="kids"><%= user.local.children[i].dob.toDateString() %></span>
+        <!-- <span class="kids">Medications:<%= user.local.children[i].medications %></span>
+          <span class="kids">Allergies: <%= user.local.children[i].allergies%></span> -->
+    </section>
 
-
-          
-</section> 
-<section>
-  <img class="childimg" src="">
+    <section>
+  <img class="childimg" src="<%= user.local.children[i].photo%>">
 </section>
+
+
 </section>                     
           <% } %>
 
                               </section>
+                              
                             </div>
-                            
+                            <section>
+                                <h1>Bio<%= user.local.bio %></h1>
+                            </section>
                         </div>
                        
                     </div>
@@ -121,6 +129,12 @@
                 
                 </footer>
                 <script src="js/main.js"></script>
+                <script type="text/javascript" src="js/main.js"></script>
+                <script>
+                    function goBack() {
+                        history.back(); // Navigate to the previous page
+                    }
+                    </script>
                 <script src="https://kit.fontawesome.com/70c4a4bd4a.js"
                     crossorigin="anonymous"></script>
 
