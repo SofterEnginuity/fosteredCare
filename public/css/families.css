@@ -66,6 +66,13 @@ main{
     flex-wrap: wrap;
    }
 
+   .btn{
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
+
 ul{
   display: flex;
   align-items: center;
@@ -77,6 +84,7 @@ ul{
 header {
   background-color: rgb(228, 237, 251);
   color: white;
+padding:1em;
 
   text-align: center;
   height:10vh;;

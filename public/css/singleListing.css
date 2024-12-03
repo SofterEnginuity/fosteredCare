@@ -3,12 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-html{
-    height:100%;
-  }
-  
-  body {
+html, body {
       font-family: Arial, sans-serif;
       margin: 0;
       display: flex;
@@ -16,13 +11,15 @@ html{
      height:100%;
      width:100%;
     }
-  
-  /* .main{
+  h1{
+    margin-top: 3em;
+  }
+  .main{
     display: flex;             
     flex-grow: 1;           
     justify-content: space-between;
-    height:100vh;
-  } */
+ 
+  }
 .drow1 {
     display: flex;
     align-content: flex-end;
@@ -32,7 +29,8 @@ html{
 }
 .childbio{
   display:flex;
-width:40%;
+width:50%;
+flex-direction:column-reverse;
 }
   header{
     background-color: rgb(228, 237, 251);
@@ -47,7 +45,7 @@ align-items:baseline;
   }
   .back{
     display:flex;
-width:100%
+width:100%;
   }
   .child{
       display: flex;
@@ -57,6 +55,7 @@ width:100%
   }
 .children{
   display:flex;
+  justify-content:space-between;
 }
 .kiddos{
   display:flex;
@@ -67,7 +66,7 @@ main{
            /* Flexbox on the container */
     flex-grow: 1;               /* Make it grow to fill available space */
     justify-content: space-between;
-    height:100vh;
+    /* height:100vh; */
   }
 .bio{
   width:100%;
@@ -91,9 +90,12 @@ main{
     list-style:none;
     display:flex;
   }
-  footer{
+  footer .footer{
     display:flex;
+  
     align-items:flex-end;
+    clear: both; 
+
   }
 .footer{
   

@@ -19,6 +19,12 @@ body {
   height:75px;
 }
 
+.btn{
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
 
 .headernav{
   display:flex;
@@ -55,6 +61,7 @@ ul{
 header {
   background-color: rgb(228, 237, 251);
   color: white;
+  padding:1em;
   text-align: center;
   height:10vh;
 }
