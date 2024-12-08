@@ -1,16 +1,29 @@
 *{
     box-sizing: border-box;
   }
-  
-  
+  #h3{
+    font-size:15px;
+    font-weight:bold;
+    margin-top:1px;
+  }
+  #h1{
+    font-size:25px;
+  }
+
   body {
       font-family: Arial, sans-serif;
       margin: 0;
+      font-size:13px;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
-    
+    #btn{
+      display:flex;
+     
+    }
+
+
     header{
       background-color: rgb(228, 237, 251);
       color: white;
@@ -18,7 +31,10 @@
       text-align: center;
       height:10vh;
     }
-  
+  .headernav{
+      display: flex;
+      justify-content: space-between;
+  }
     main {
       text-align: center;
       flex-grow: 1;
@@ -48,4 +64,29 @@
       height: 56px;
     }
   
+
+
+   p{
+text-align:center;   }
+
+#about{
+margin-left:4%;
+margin-right:4%;
+
+}
+   
+   .first .second .third{
+    width:60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom:2em;
+   }
+
+   .second{
+    /* width:75%; */
+    display:flex;
+    flex-direction:column;
+    margin-left:10%;
+    margin-right:10%;
+   }
    

@@ -10,6 +10,9 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -21,7 +24,7 @@ body {
 header{
   background-color: rgb(228, 237, 251);
   color: white;
-  padding: 1em;
+  /* padding: 1em; */
   text-align: center;
   height:10vh;
 }
@@ -29,9 +32,8 @@ p{
   font-size:25px;
 }
 .btn {
-  font-size: 21px;
-
-  margin-bottom: 3px;
+  font-size: 12px;
+  margin-bottom:2px;
 }
 p{
   color:#737272;
@@ -43,7 +45,7 @@ text-align:center;
   flex-grow:1;
 }
 .maincontent {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
 
@@ -145,18 +147,30 @@ ul{
 vertical-align:center;
 }
 .intro p{
-width:80%;
+width:100%;
 }
 .introduction{
+ 
   width:35%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+
+}
+
+h1{
+  font-family: "Chewy", system-ui;
+  font-size:45px;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .first{
-  outline:black solid 1px;
+  /* outline:black solid 1px; */
+outline: 1px solid rgb(228, 237, 251);
+border-radius: 6px;
   width:100%;
 
 }
@@ -173,7 +187,8 @@ width:80%;
 
 }
 .second{
-  outline:black solid 1px;
+  outline: 1px solid rgb(228, 237, 251);
+  border-radius: 6px;
   width:100%;
   display: flex;
   flex-direction: row-reverse;

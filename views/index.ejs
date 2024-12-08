@@ -4,6 +4,10 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Fostered Care</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
 		<link rel="stylesheet"
 		href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/">
@@ -24,10 +28,10 @@
 
 			<div class="jumbotron text-center">
 				<%if(user===undefined){%>
-				
-					<a href="/login" class="btn btn-default btn-sm fa fa-user">
+			
+					<a href="/login" class="btn btn-default btn-sm fa">
 						Sign In</a>
-						<a href="/signUp" class="btn btn-default btn-sm fa fa-user">
+						<a href="/signUp" class="btn btn-default btn-sm fa">
 							Sign Up</a>
 				
 				
@@ -94,9 +98,9 @@
 		</main>
 		<footer class="footer">
 			<ul class="footernav">
-				<a href="#">Our Mission</a>
-				<a href="#">FAQ</a>
-				<a href="#">Contact Us</a>
+				<a href="/aboutUs#about">Our Mission</a>
+				<a href="/aboutUs#faq">FAQ</a>
+				<a href="/aboutUs#contact">Contact Us</a>
 			</ul>
 			<!-- <h1>Country Resources for Foster Parents</h1> -->
 			<ul>
@@ -116,6 +120,9 @@
 			</section>
 		</footer>
 
+
+		<script type="text/javascript" src="js/socket.io.min.js"></script>
+		<script type="text/javascript" src="js/socketio.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

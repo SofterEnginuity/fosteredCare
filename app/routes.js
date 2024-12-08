@@ -93,12 +93,11 @@ module.exports = function (app, passport, db) {
   });
 
 
-  app.post("/messages", (req, res) => {
-    console.log("/messages")
+  app.get("/test", (req, res) => {
+    console.log("/test")
     console.log(req.body)
     const io = req.app.get('socketio')
-    // console.log(io)
-
+    console.log(io)
   });
 
   //photo upload
@@ -178,6 +177,9 @@ module.exports = function (app, passport, db) {
     req.user.save();
     console.log("add child", req.body);
     res.redirect("/profile");
+  });
+  app.get("/aboutUs", function (req, res) {
+    res.render("aboutUs.ejs");
   });
 
   // app.post('/addParent', (req, res) => {

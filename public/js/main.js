@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.querySelector('.delete').addEventListener('click', function() {
+document.querySelector('.delete')?.addEventListener('click', function() {
     fetch('/profile', {
       method: 'DELETE',
       headers: {
