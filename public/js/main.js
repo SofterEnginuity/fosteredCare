@@ -14,6 +14,14 @@ document.querySelector('label#password')?.addEventListener('click', function(eve
   document.querySelector('input#password').value = 'providers'
 })
 
+document.getElementById('open-sidebar').addEventListener('click', function () {
+  document.getElementById('message-sidebar').classList.add('open');
+});
+
+document.getElementById('close-sidebar').addEventListener('click', function () {
+  document.getElementById('message-sidebar').classList.remove('open');
+});
+
 
 
  

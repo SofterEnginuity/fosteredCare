@@ -10,10 +10,10 @@ body {
    height:100%
   }
 
-.btn-sm{
+#btn-sm{
   padding: 5px 10px;
-  font-size: 16px;
-  line-height: 2.5;
+  font-size: 12px;
+  line-height: 1.5;
   border-radius: 3px;
 }
   /* .notable-regular {
@@ -187,7 +187,6 @@ form{
   align-items:flex-end;
 } */
   .footer{
-
     margin-top: auto; 
     background-color: rgb(228, 237, 251);
     color: white;

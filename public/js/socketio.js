@@ -20,4 +20,5 @@ document.querySelector('button#sendMsg').addEventListener('click', sendMsg)
         socket.emit('chat message', dataMsg)
     }
 
+    
 
