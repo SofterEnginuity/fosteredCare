@@ -1,9 +1,7 @@
-// server.js
 
 // set up ======================================================================
-// get all the tools we need
 var express  = require('express');
-var app      = express();
+const { createServer } = require("node:http");
 var port     = process.env.PORT || 8065;
 const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
@@ -14,9 +12,13 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+const { ObjectId } = require('mongodb');
+const { User,Msg } = require('./app/models/user.js');
 
+var app      = express();
+const httpServer = createServer(app)
 var configDB 
-console.log(process.env)
+// console.log(process.env)
 try{
  configDB = require('./config/database.js');
 }catch(err){
@@ -48,11 +50,16 @@ app.use('/uploads', express.static('uploads'));
 app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
-app.use(session({
+
+const sessionMiddleware = session({
+  
     secret: 'rcbootcamp2021b', // session secret
     resave: true,
     saveUninitialized: true
-}));
+
+});
+
+app.use(sessionMiddleware)
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -61,8 +68,33 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // launch ======================================================================
 
 console.log('The magic happens on port ' + port);
-const server = require('https').createServer(app)
-const io = require('socket.io')(server)
+
+
+const io = new Server(httpServer);
+
+function onlyForHandshake(middleware) {
+  return (req, res, next) => {
+    const isHandshake = req._query.sid === undefined;
+    if (isHandshake) {
+      middleware(req, res, next);
+    } else {
+      next();
+    }
+  };
+}
+
+io.engine.use(onlyForHandshake(sessionMiddleware));
+io.engine.use(onlyForHandshake(passport.session()));
+io.engine.use(
+  onlyForHandshake((req, res, next) => {
+    if (req.user) {
+      next();
+    } else {
+      res.writeHead(401);
+      res.end();
+    }
+  }),
+);
 
 io.on('connection', (socket) => {
   console.log('A user connected');
@@ -72,9 +104,45 @@ io.on('connection', (socket) => {
   });
 
   // Handle other custom events here
-  socket.on('chat message', (msg) => {
+  socket.on('chat message', async (msg) => {
+    msg.from = socket.request.user._id
+    console.log(msg)
+    // console.log(socket.request)
     io.emit('chat message', msg); // Broadcast the message to all clients
+   let client 
+   let provider
+
+   if(socket.request.user.userType=="families"){
+    client=socket.request.user
+    provider=await User.findById(msg.to)
+   }else{
+    client=await User.findById(msg.to)
+    provider=socket.request.user
+   }
+    if(!provider.local.msg){
+      provider.local.msg=[]
+    }
+let msgObj=provider.local.msg.filter(sentMsg=>(sentMsg.from.equals(client._id)))[0]
+if(!msgObj){
+  msgObj=new Msg()
+  msgObj.from=client
+  msgObj.msg=[]
+  provider.local.msg.push(msgObj)
+}
+
+msgObj.msg.push({
+  date:msg.date,
+  content:msg.content,
+  sent:msg.from.equals(provider._id)
+})
+provider.save()
+msgObj.save()
   });
+
 });
+
 app.set('socketio', io)
-app.listen(port);
+// app.listen(port);
+httpServer.listen(port, ()=> {
+  console.log(`application is running at: http://localhost:${port}`);
+})

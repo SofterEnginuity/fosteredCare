@@ -10,8 +10,15 @@ var childSchema = mongoose.Schema({
     medications    : String,
     photo           :String
 })
+
 const Child = mongoose.model('Child',childSchema)
 
+var msgSchema = mongoose.Schema({
+    from: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    msg:[{sent:Boolean, content:String, date:Date}]
+    
+})
+const Msg = mongoose.model('Msg',msgSchema)
 
 // define the schema for our user model
 // var userSchema = mongoose.Schema({
@@ -49,11 +56,11 @@ var userSchema = mongoose.Schema({
         name         : String,
         dob          : Date,
         gender       : String,
-       familySize    : Number, 
-       photo         : String,
-       bio           :String,
-      
-        children : [childSchema]     
+        familySize   : Number, 
+        photo        : String,
+        bio          : String,
+        msg          : [msgSchema],
+        children     : [childSchema]     
    
     },
     facebook         : {
@@ -90,5 +97,5 @@ userSchema.methods.validPassword = function(password) {
 // create the model for users and expose it to our app
 // module.exports = mongoose.model('User', userSchema);
 const User = mongoose.model('User', userSchema);
-module.exports = {User,Child}
+module.exports = {User,Child,Msg}
 // module.exports = User

@@ -86,7 +86,7 @@ module.exports = function (app, passport, db) {
       (err, result) => {
         //go to db and finds all of the
         if (err) return console.log(err); //reading the html
-        console.log(result);
+        // console.log(result);
         res.render("singleListing.ejs", { user: result });
       }
     );
