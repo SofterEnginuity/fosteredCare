@@ -20,6 +20,28 @@ html, body {
     justify-content: space-between;
  
   }
+  .myMenu {
+    display: flex;
+    flex-direction: row; 
+    gap: 10px; 
+    margin-left: auto;
+  }
+  .headernav{
+    display:flex;
+    justify-content: space-between;
+  }
+  #btn-sm{
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
+  .btn{
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
 .drow1 {
     display: flex;
     align-content: flex-end;

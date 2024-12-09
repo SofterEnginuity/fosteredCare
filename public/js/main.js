@@ -23,7 +23,6 @@ document.getElementById('close-sidebar').addEventListener('click', function () {
 });
 
 
-
  
 function goBack() {
   history.back(); // Navigate to the previous page
@@ -44,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Toggle edit mode by replacing span content with an input
       if (!span.querySelector('input')) {
         const currentValue = span.innerText;
+        const icon = span.querySelector('i')
         span.innerHTML = `<input type="text" value="${currentValue}" />`;
         const input = span.querySelector('input');
 
@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('blur', () => {
           const newValue = input.value;
           span.innerHTML = newValue; // Update UI
-
+          // span.appendChild(icon)
+          span.insertBefore(icon, span.childNodes[0] )
           // Send PUT request to update the field in the database
           fetch('/profile', {
             method: 'PUT',
