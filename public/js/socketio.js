@@ -6,13 +6,15 @@
     console.log(socket)
     socket.emit('connection')
 
-document.querySelector('button#sendMsg').addEventListener('click', sendMsg)
-    function sendMsg(event){
-        event.preventDefault()
+    Array.from(document.querySelectorAll("button.sendMsg")).forEach(button=>button.addEventListener("click", () => {
         
-        const inputElement = document.querySelector('textarea#popup-message')
+        button.closest('#popup-container').classList.add("popup-hidden"); // Hide the popup
+  
+       
+        // event.preventDefault()
+        const inputElement =  button.closest('#popup-container').querySelector('textarea#popup-message')
         const message =  inputElement.value
-
+        
         if (message) {
             const dataMsg = {
                 // from: 
@@ -21,15 +23,17 @@ document.querySelector('button#sendMsg').addEventListener('click', sendMsg)
                 date: Date.now()
             }
             socket.emit('chat message', dataMsg)
-        const popupContainer = document.getElementById("popup-container");
-         popupContainer.classList.add("popup-hidden"); // Hide the popup
+           setTimeout(()=>{window.location.reload()},500)
+            console.log('send message',inputElement.dataset.id, message)
+            const popupContainer =  button.closest('#popup-container');
+        //  popupContainer.classList.add("popup-hidden");
          inputElement.value = ""
               
         } else {
           alert("Please fill out the message field.");
         }
     
-    }
+    }));
 
 
 

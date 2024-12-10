@@ -1,7 +1,3 @@
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var thumbDown = document.getElementsByClassName("fa-thumbs-down");
-var trash = document.getElementsByClassName("fa-trash-o");
-
 
 
 document.querySelector('label#email')?.addEventListener('click', function(event){
@@ -91,47 +87,25 @@ document.querySelector('.delete')?.addEventListener('click', function() {
 
 
 
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('messages', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
-});
-
-
-
-
 // Elements
-const popupContainer = document.getElementById("popup-container");
-const sendMessageButton = document.getElementById("showPopUp");
+// const popupContainer = document.getElementById("popup-container");
 
-const cancelButton = document.getElementById("cancel-button");
-const messageForm = document.getElementById("message-form");
-const subjectInput = document.getElementById("subject");
-const messageTextarea = document.getElementById("popup-message");
+
+
+// const messageForm = document.getElementById("message-form");
+// const messageTextarea = document.getElementById("popup-message");
 
 // Open the popup when clicking "Send Msg"
-sendMessageButton.addEventListener("click", (e) => {
+Array.from(document.getElementsByClassName("showPopUp")).forEach(button=>button.addEventListener("click", (e) => {
   // const userId = e.target.previousElementSibling.dataset.id; // Get user ID from data-id attribute
   // popupContainer.dataset.userId = userId; 
-  popupContainer.classList.remove("popup-hidden"); // Show the popup
-});
+  button.parentElement.querySelector('#popup-container').classList.remove("popup-hidden"); // Show the popup
+}));
+
 
 // Close the popup when clicking "Cancel"
-cancelButton.addEventListener("click", () => {
-  popupContainer.classList.add("popup-hidden"); // Hide the popup
-});
+Array.from(document.getElementsByClassName("cancel-button")).forEach(button=>button.addEventListener("click", () => {
+  button.closest('#popup-container').classList.add("popup-hidden"); // Hide the popup
+}));
 
 
