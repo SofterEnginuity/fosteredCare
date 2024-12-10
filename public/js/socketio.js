@@ -9,16 +9,29 @@
 document.querySelector('button#sendMsg').addEventListener('click', sendMsg)
     function sendMsg(event){
         event.preventDefault()
-        const inputElement = document.querySelector('#msg')
+        
+        const inputElement = document.querySelector('textarea#popup-message')
         const message =  inputElement.value
-        const dataMsg = {
-            // from: 
-            to: inputElement.dataset.id,
-            content: message,
-            date: Date.now()
+
+        if (message) {
+            const dataMsg = {
+                // from: 
+                to: inputElement.dataset.id,
+                content: message,
+                date: Date.now()
+            }
+            socket.emit('chat message', dataMsg)
+        const popupContainer = document.getElementById("popup-container");
+         popupContainer.classList.add("popup-hidden"); // Hide the popup
+         inputElement.value = ""
+              
+        } else {
+          alert("Please fill out the message field.");
         }
-        socket.emit('chat message', dataMsg)
+    
     }
+
+
 
     
 

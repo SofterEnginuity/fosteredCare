@@ -59,14 +59,14 @@
                       <%= user.local.familySize %></span>
 
                    
-                 <label>Location:</label>
+                 <!-- <label>Location:</label>
                       <span class="editable location" data-id="<%= user._id %>"
                         data-field="location">
                       <i class="fa fa-edit edit-icon"
                         data-id="<%= user._id %>"
                         data-field="location" aria-hidden="true"></i>
                       <%= user.local.location %></span>
-                   
+                    -->
                    
                    <label>Age:</label>
                       <span class="editable dob" data-id="<%= user._id %>"
@@ -178,7 +178,7 @@
 
     <% for(let p=0; p<providers.length; p++){ %>
     <section class="msg-section">
-    <h3><%= providers[p].local.name %></h3>
+    <h3 class="msgH3"><%= providers[p].local.name %></h3>
          <% for(let c=0; c<providers[p].local.clientMsgs.length; c++){ %>
           <% if(providers[p].local.clientMsgs[c].from.equals(user._id)){%>
            <% for(let m=0; m<providers[p].local.clientMsgs[c].msg.length; m++){ %>
@@ -195,7 +195,7 @@
       <section class="msg-section">
              <% for(let c=0; c<user.local.clientMsgs.length; c++){ %>
               <% let client = clients.find(client=>client._id.equals(user.local.clientMsgs[c].from)) %>
-              <h3><%= client.local.name %></h3>
+              <h3 class="msgH3"><%= client.local.name %></h3>
 
             
                <% for(let m=0; m<user.local.clientMsgs[c].msg.length; m++){ %>
@@ -210,10 +210,7 @@
       
 
 
-        <section class="msg-section">
-     <h3>Third Thursday</h3>
-     <p> Hi! I was curious if you would happen to have time during the third week of December? I know it is close to the holidays so I wanted to reach out before booking to confirm availability! Only 1 of my children would be stayying as the other has a home visit for the weekend. </p>
-      </section>
+       
       <section class="msg-section">
         <h3>Pets</h3>
         <p>Do you have any pets? My daughter is allergic to cats and dogs, but loves animals so I am searching for a provider with furless pets, like reptiles or fish. I am hoping to make her 2 week stay as comfrtable as possible and know that it would help! </p>

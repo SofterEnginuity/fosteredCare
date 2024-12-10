@@ -125,7 +125,7 @@ io.on('connection', (socket) => {
 let msgObj=provider.local.clientMsgs.filter(sentMsg=>(sentMsg.from.equals(client._id)))[0]
 if(!msgObj){
   msgObj=new Msg()
-  msgObj.from=client
+  msgObj.from=client._id
   msgObj.msg=[]
   provider.local.clientMsgs.push(msgObj)
 }

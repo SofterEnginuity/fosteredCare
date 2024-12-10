@@ -46,30 +46,30 @@
 
                                     <h1 ><%= user.local.name %></h1>
                                   <h2><%= user.local.location %></h2>
-                    
+
                                    
                                   
-<input type="text" data-id="<%= user._id %>" id="msg">
-<button id="sendMsg">Send Msg</button>
+<!-- <input type="text" data-id="<%= user._id %>" id="msg">-->
+<button id="showPopUp">Send Msg</button>
 
 <!-- Popup Container (Hidden by default) -->
-<!-- <div id="popup-container" class="popup-hidden">
+<div id="popup-container" class="popup-hidden">
   <div class="popup">
     <h3>Send a Message</h3>
     <form id="message-form">
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" required>
+      <!-- <label for="subject">Subject:</label>
+      <input type="text" id="subject" required> -->
       
       <label for="message">Message:</label>
-      <textarea id="popup-message" rows="4" required></textarea>
+      <textarea id="popup-message" rows="4" required data-id="<%= user._id %>" ></textarea>
       
       <div class="popup-buttons">
         <button type="button" id="cancel-button">Cancel</button>
-        <button type="submit">Send</button>
+        <button type="submit" id="sendMsg">Send</button>
       </div>
     </form>
   </div>
-</div> -->
+</div> 
 
                                 
                                     

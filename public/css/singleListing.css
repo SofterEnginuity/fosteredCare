@@ -119,6 +119,10 @@ main{
     clear: both; 
 
   }
+  /* Hide popup by default */
+#popup-container.popup-hidden {
+  display: none;
+}
   /* Popup container that covers the entire screen */
 #popup-container {
   position: fixed;
@@ -143,10 +147,7 @@ main{
   width: 100%;
 }
 
-/* Hide popup by default */
-.popup-hidden {
-  display: none;
-}
+
 
 /* Buttons */
 .popup-buttons {
