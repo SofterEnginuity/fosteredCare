@@ -25,12 +25,15 @@
           </div>
           <div class="out">
             <a href="/logout" class="btn btn-default btn-sm" id="btn-sm">Logout</a>
-       
+            <button class="delete">Delete Account</button>
+
         </div>
+   
         </section>
 
 		</header>
     <main>
+      <h1 id="h1">Welcome to your Profile Page!</h1>
   <section class="top">
     <section class="userbio">
           <div class="row">
@@ -189,7 +192,7 @@
              <button class="showPopUp">Reply</button>
 
               
-             <div id="popup-container" class="popup-hidden">
+             <div class="popup-hidden popup-container">
                <div class="popup">
                  <h3>Reply</h3>
                
@@ -211,9 +214,10 @@
        <% } %>
 
      <% }else{%>
-      <section class="msg-section">
+      
              <% for(let c=0; c<user.local.clientMsgs.length; c++){ %>
               <% let client = clients.find(client=>client._id.equals(user.local.clientMsgs[c].from)) %>
+              <section class="msg-section">
               <h3 class="msgH3"><%= client.local.name %></h3>
 
             
@@ -225,7 +229,7 @@
                  <button class="showPopUp">Reply</button>
 
               
-                 <div id="popup-container" class="popup-hidden">
+                 <div  class="popup-hidden popup-container">
                    <div class="popup">
                      <h3>Reply</h3>
                      <form>
@@ -233,7 +237,7 @@
                        <input type="text" id="subject" required> -->
                        
                        <label for="message">Message:</label>
-                       <textarea name="happyText" id="popup-message" rows="4" required data-id="<%=client._id %>" ></textarea>
+                       <textarea name="happyText" class="popup-message" rows="4" required data-id="<%=client._id %>" ></textarea>
                        
                        <div class="popup-buttons">
                          <button type="button" id="cancel-button" class="cancel-button">Cancel</button>
@@ -242,9 +246,9 @@
                      </form>
                    </div>
                  </div> 
-                 
+                </section>
              <% } %>
-            </section>
+         
             
     <%} %>
      

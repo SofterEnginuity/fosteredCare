@@ -80,7 +80,7 @@ document.querySelector('.delete')?.addEventListener('click', function() {
         console.log(response.body)
       } else {
         console.error('Failed to delete the item.');
-      }
+      }window.location.reload()
     });
   });
 
@@ -99,13 +99,13 @@ document.querySelector('.delete')?.addEventListener('click', function() {
 Array.from(document.getElementsByClassName("showPopUp")).forEach(button=>button.addEventListener("click", (e) => {
   // const userId = e.target.previousElementSibling.dataset.id; // Get user ID from data-id attribute
   // popupContainer.dataset.userId = userId; 
-  button.parentElement.querySelector('#popup-container').classList.remove("popup-hidden"); // Show the popup
+  button.parentElement.querySelector('div.popup-container').classList.remove("popup-hidden"); // Show the popup
 }));
 
 
 // Close the popup when clicking "Cancel"
 Array.from(document.getElementsByClassName("cancel-button")).forEach(button=>button.addEventListener("click", () => {
-  button.closest('#popup-container').classList.add("popup-hidden"); // Hide the popup
+  button.closest('div.popup-container').classList.add("popup-hidden"); // Hide the popup
 }));
 
 

@@ -8,11 +8,11 @@
 
     Array.from(document.querySelectorAll("button.sendMsg")).forEach(button=>button.addEventListener("click", () => {
         
-        button.closest('#popup-container').classList.add("popup-hidden"); // Hide the popup
+        button.closest('div.popup-container').classList.add("popup-hidden"); // Hide the popup
   
        
         // event.preventDefault()
-        const inputElement =  button.closest('#popup-container').querySelector('textarea#popup-message')
+        const inputElement =  button.closest('div.popup-container').querySelector('textarea.popup-message')
         const message =  inputElement.value
         
         if (message) {
@@ -25,7 +25,7 @@
             socket.emit('chat message', dataMsg)
            setTimeout(()=>{window.location.reload()},500)
             console.log('send message',inputElement.dataset.id, message)
-            const popupContainer =  button.closest('#popup-container');
+            const popupContainer =  button.closest('div.popup-container');
         //  popupContainer.classList.add("popup-hidden");
          inputElement.value = ""
               
