@@ -141,6 +141,9 @@ form{
   width:100%;
 
 }
+h3{
+  text-align:center;
+}
 .user span{
   font-size: 25px;
 }
@@ -226,8 +229,8 @@ form{
 .message-sidebar {
   position: fixed;
   top: 0;
-  right: -475px; /* Initially hidden */
-  width: 475px;
+  right: -575px; /* Initially hidden */
+  width: 575px;
   height: 100%;
   background-color: #f9f9f9;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
@@ -251,7 +254,7 @@ form{
  .msgContent.false{
   background-color:rgb(180, 216, 228);
   text-align:left;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 7px;
   &:before{
     content:'<-:';
@@ -275,6 +278,24 @@ form{
   
 }
 
+.msg-btn{
+  height: 24px;
+    width: 50px;
+    font-size:13px;
+}
+.showPopUp{
+text-align:center;
+height: 24px;
+width: 75px;
+font-size:13px;
+border-radius:3.5px;
+}
+
+textarea{
+  width:100%;
+  height: 75%;
+  font-size:20px;
+}
 .message-sidebar.open {
   right: 0; /* Show sidebar */
 }
@@ -302,7 +323,8 @@ form{
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
+  max-width: 475px;
+  height: 300px;
   width: 100%;
 }
 

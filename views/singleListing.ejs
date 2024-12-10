@@ -50,7 +50,7 @@
                                    
                                   
 <!-- <input type="text" data-id="<%= user._id %>" id="msg">-->
-<button class="showPopUp">Send Msg</button>
+<button class="showPopUp">Message Me!</button>
 
 <!-- Popup Container (Hidden by default) -->
 
@@ -61,12 +61,12 @@
       <!-- <label for="subject">Subject:</label>
       <input type="text" id="subject" required> -->
       
-      <label for="message">Message:</label>
-      <textarea class="popup-message" rows="4" required data-id="<%= user._id %>" ></textarea>
+      <label for="message"></label>
+      <textarea class="popup-message" id="textarea" rows="4" required data-id="<%= user._id %>" ></textarea>
       
       <div class="popup-buttons">
-        <button type="button" id="cancel-button" class="cancel-button">Cancel</button>
-        <button type="button" class="sendMsg">Send</button>
+        <button type="button" id="cancel-button" class="cancel-button msg-btn">Cancel</button>
+        <button type="button" class="sendMsg msg-btn">Send</button>
       </div>
     </form>
   </div>

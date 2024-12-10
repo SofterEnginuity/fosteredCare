@@ -68,7 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 document.querySelector('.delete')?.addEventListener('click', function() {
+  
+const userConfirmed = confirm("Are you sure you want to delete this account?")
+  
+  if(userConfirmed){
+
     fetch('/profile', {
       method: 'DELETE',
       headers: {
@@ -81,7 +87,12 @@ document.querySelector('.delete')?.addEventListener('click', function() {
       } else {
         console.error('Failed to delete the item.');
       }window.location.reload()
+   
     });
+    
+  }else{
+    console.log('Delete Cancelled')
+  }
   });
 
 
