@@ -9,7 +9,9 @@ body {
     flex-direction: column;
    height:100%
   }
-
+.upbtn{
+  width:16%;
+}
 #btn-sm{
   padding: 5px 10px;
   font-size: 12px;
@@ -156,6 +158,7 @@ form{
   display: flex;
   flex-direction: column;
   font-size:24px;
+  text-align: left;
   justify-content: center;
   outline:black;
 }
@@ -173,6 +176,12 @@ form{
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
+}
+.allergies{
+  font-size:15px;
+}
+.medications{
+  font-size:15px;
 }
 .imgdivchild{
   width:40%;
@@ -197,7 +206,9 @@ form{
     /* height:8vh; */
   }
 
-
+.msg-section{
+  border-bottom:3px solid rgb(228, 237, 251); 
+}
 /* Sidebar styles */
 .message-sidebar {
   position: fixed;

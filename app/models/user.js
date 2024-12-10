@@ -59,7 +59,7 @@ var userSchema = mongoose.Schema({
         familySize   : Number, 
         photo        : String,
         bio          : String,
-        msg          : [msgSchema],
+        clientMsgs          : [msgSchema],
         children     : [childSchema]     
    
     },

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Profile</title>
-    <!-- <link rel="stylesheet" href="fontawesome-free-6.6.0-desktop/svgs/"> -->
+   
     <link rel="stylesheet"
       href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet"
@@ -25,7 +25,7 @@
           </div>
           <div class="out">
             <a href="/logout" class="btn btn-default btn-sm" id="btn-sm">Logout</a>
-          <!-- <a href="/logout" class="delete btn btn-default btn-sm">Delete Account</a> -->
+       
         </div>
         </section>
 
@@ -49,16 +49,7 @@
                       data-field="name" aria-hidden="true"></i>
                     <%= user.local.name %></span>
 
-                    
-                     
-                      <span class="editable gender" data-id="<%= user._id %>"
-                        data-field="gender">
-                      <i class="fa fa-edit edit-icon"
-                        data-id="<%= user._id %>"
-                        data-field="gender" aria-hidden="true"></i>
-                        <%= user.local.gender %></span>
 
-                    
                   <label>Family Size:</label>
                     <span class="editable user" data-id="<%= user._id %>"
                       data-field="familySize">
@@ -77,13 +68,13 @@
                       <%= user.local.location %></span>
                    
                    
-                   <label>Date of Birth:</label>
+                   <label>Age:</label>
                       <span class="editable dob" data-id="<%= user._id %>"
                         data-field="dob">
                       <i class="fa fa-edit edit-icon"
                         data-id="<%= user._id %>"
                         data-field="dob" aria-hidden="true"></i>
-                        <%= user.local.dob.toDateString() %></span>
+                        <%= Math.floor((new Date() - new Date(user.local.dob)) / (1000 * 60 * 60 * 24 * 365.25)) %></span>
                    
                         <label>Bio:</label>
                         <span class="editable bio" data-id="<%= user._id %>"
@@ -94,15 +85,6 @@
                         <%= user.local.bio %></span>
 
 
-                        <!-- <span class="editable email" data-id="<%= user._id %>"
-                          data-field=emaile">
-                        <i class="fa fa-edit edit-icon"
-                          data-id="<%= user._id %>"
-                          data-field="email" aria-hidden="true"></i>
-                        <%= user.local.email %></span> -->
-
-
-
                         
                     
                   <form action="/uploadPhoto" method="POST"
@@ -111,7 +93,7 @@
                         class="inputfile" />
                       <input hidden name="id" value="<%= user._id %>"></input>
                     <label for="file"></label>
-                    <button type="submit">Upload</button>
+                    <button type="submit" class="upbtn">Upload</button>
                   </form>
 
                   </section>
@@ -121,8 +103,8 @@
                     <img src="<%= user.local.photo %>" 
                       width="100px" height="auto">
                     <% } %>
-            </div>
-</section>
+              </div>
+              </section>
                   
             </li>
           </ul>
@@ -192,9 +174,55 @@
         <button id="close-sidebar" class="btn btn-sm">Close</button>
       </div>
       <div class="message-content">
-        <h4>Messages</h4>
-        <p>No new messages.</p>
-      </div>
+<% if(user.local.userType=='families'){ %>
+
+    <% for(let p=0; p<providers.length; p++){ %>
+    <section class="msg-section">
+    <h3><%= providers[p].local.name %></h3>
+         <% for(let c=0; c<providers[p].local.clientMsgs.length; c++){ %>
+          <% if(providers[p].local.clientMsgs[c].from.equals(user._id)){%>
+           <% for(let m=0; m<providers[p].local.clientMsgs[c].msg.length; m++){ %>
+
+        <p class="msgContent <%= providers[p].local.clientMsgs[c].msg[m].sent %>">
+               <%= providers[p].local.clientMsgs[c].msg[m].content %></p>
+             <% } %>
+           <% } %>
+         <% } %>
+        </section>
+       <% } %>
+
+     <% }else{%>
+      <section class="msg-section">
+             <% for(let c=0; c<user.local.clientMsgs.length; c++){ %>
+              <% let client = clients.find(client=>client._id.equals(user.local.clientMsgs[c].from)) %>
+              <h3><%= client.local.name %></h3>
+
+            
+               <% for(let m=0; m<user.local.clientMsgs[c].msg.length; m++){ %>
+    
+            <p class="msgContent <%= user.local.clientMsgs[c].msg[m].sent %>">
+                   <%= user.local.clientMsgs[c].msg[m].content %></p>
+                 <% } %>
+             <% } %>
+            </section>
+    <%} %>
+     
+      
+
+
+        <section class="msg-section">
+     <h3>Third Thursday</h3>
+     <p> Hi! I was curious if you would happen to have time during the third week of December? I know it is close to the holidays so I wanted to reach out before booking to confirm availability! Only 1 of my children would be stayying as the other has a home visit for the weekend. </p>
+      </section>
+      <section class="msg-section">
+        <h3>Pets</h3>
+        <p>Do you have any pets? My daughter is allergic to cats and dogs, but loves animals so I am searching for a provider with furless pets, like reptiles or fish. I am hoping to make her 2 week stay as comfrtable as possible and know that it would help! </p>
+         </section>
+         <section class="msg-section">
+          <h3>Location</h3>
+          <p>Do you live in Philadelphia proper? My kiddo has some school events right outside of WillowGrove that I am hoping we can find accomodations for!</p>
+           </section>
+    </div>
     </div>
     
     <button id="open-sidebar" class="btn btn-primary open-sidebar">Messages</button>
@@ -210,9 +238,17 @@
   
       <span class="kids"><%= user.local.children[i].name %></span>
         
-        <span class="kids"><%= user.local.children[i].gender %>
-        </span><span class="kids">Allergies: <%= user.local.children[i].allergies%></span>
-        <span class="kids">Medications:<%= user.local.children[i].medications %></span>
+        <span class="kids"><%= user.local.children[i].gender %></span>
+          <span class="kids">
+            Age:<%= Math.floor((new Date() - new Date(user.local.children[i].dob)) / (1000 * 60 * 60 * 24 * 365.25)) %>
+          </span>
+          <% if (user.local.children[i].allergies && user.local.children[i].allergies.trim() !== "" && user.local.children[i].allergies.trim().toUpperCase() !== "N/A") { %>
+            <span class="kids allergies">Allergies: <%= user.local.children[i].allergies %></span>
+          <% } %>
+          
+          <% if (user.local.children[i].medications && user.local.children[i].medications.trim() !== "" && user.local.children[i].medications.trim().toUpperCase() !== "N/A") { %>
+            <span class="kids medications">Medications: <%= user.local.children[i].medications %></span>
+          <% } %>
         
         </section>
         
@@ -232,9 +268,9 @@
     </main>
     <footer class="footer">
 			<ul class="footernav">
-				<a href="#">Our Mission</a>
-				<a href="#">FAQ</a>
-				<a href="#">Contact Us</a>
+        <a href="/aboutUs#about">Our Mission</a>
+				<a href="/aboutUs#faq">FAQ</a>
+				<a href="/aboutUs#contact">Contact Us</a>
 			</ul>
  
       

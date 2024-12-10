@@ -111,7 +111,66 @@ Array.from(trash).forEach(function(element) {
 });
 
 
+
+
+// Elements
+const popupContainer = document.getElementById("popup-container");
+const sendMessageButton = document.getElementById("sendMsg");
+const cancelButton = document.getElementById("cancel-button");
+const messageForm = document.getElementById("message-form");
+const subjectInput = document.getElementById("subject");
+const messageTextarea = document.getElementById("popup-message");
+
+// Open the popup when clicking "Send Msg"
+sendMessageButton.addEventListener("click", (e) => {
+  const userId = e.target.previousElementSibling.dataset.id; // Get user ID from data-id attribute
+  popupContainer.dataset.userId = userId; // Store user ID in the popup container
+  popupContainer.classList.remove("popup-hidden"); // Show the popup
+});
+
+// Close the popup when clicking "Cancel"
+cancelButton.addEventListener("click", () => {
+  popupContainer.classList.add("popup-hidden"); // Hide the popup
+});
+
+// Handle form submission when the "Send" button is clicked
+messageForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent the form from submitting normally
+
+  const userId = popupContainer.dataset.userId; // Get the user ID from the popup data
+  const subject = subjectInput.value.trim(); // Get the subject
+  const message = messageTextarea.value.trim(); // Get the message
+
+  if (subject && message) {
+    // Simulate sending to backend (you can customize this part)
+    fetch('/send-message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId, subject, message }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Message sent successfully!");
+          popupContainer.classList.add("popup-hidden"); // Hide the popup
+          messageForm.reset(); // Reset the form fields
+        } else {
+          alert("Failed to send message.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      });
+  } else {
+    alert("Please fill out both the subject and message fields.");
+  }
+});
+
  
+
+
 
 // console.log(day)
 // fetch goes inside the function so it doesnt run right away!

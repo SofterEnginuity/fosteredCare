@@ -1,92 +1,167 @@
-*{
-    box-sizing: border-box;
-  }
-  #h3{
-    font-size:15px;
-    font-weight:bold;
-    margin-top:1px;
-  }
-  #h1{
-    font-size:25px;
-  }
-
-  body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      font-size:13px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    #btn{
-      display:flex;
-     
-    }
-
-
-    header{
-      background-color: rgb(228, 237, 251);
-      color: white;
-      padding: 1em;
-      text-align: center;
-      height:10vh;
-    }
-  .headernav{
-      display: flex;
-      justify-content: space-between;
-  }
-    main {
-      text-align: center;
-      flex-grow: 1;
-    }
-    
-    .footer{
-      background-color: rgb(228, 237, 251);
-      color: white;
-      padding: 1em;
-      text-align: center;
-      width: 100%;
-      bottom: 0;
-    }
-    
-    ul{
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-      justify-content: space-evenly;
-      align-content: stretch;
-      list-style: none;
-    }
-    .appicon{
-      margin: 5px;
-      padding: 10px;
-      width: 158px;
-      height: 56px;
-    }
-  
-
-
-   p{
-text-align:center;   }
-
-#about{
-margin-left:4%;
-margin-right:4%;
-
+/* General Reset */
+* {
+  box-sizing: border-box;
 }
-   
-   .first .second .third{
-    width:60%;
-    margin: 0 auto;
-    text-align: center;
-    margin-bottom:2em;
-   }
 
-   .second{
-    /* width:75%; */
-    display:flex;
-    flex-direction:column;
-    margin-left:10%;
-    margin-right:10%;
-   }
-   
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: rgb(228, 237, 251);
+  color: #333;
+  padding: 1em;
+  text-align: center;
+  height: 10vh;
+}
+
+.headernav {
+  display: flex;
+  justify-content: space-between;
+}
+
+#btn {
+  display: flex;
+}
+
+/* Main Section */
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#about {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: left;
+  line-height: 1.6;
+  color: #333;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* FAQ Styling */
+#faq {
+  margin: 30px auto;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color:rgb(159, 194, 247);
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.8;
+  color: #555;
+}
+#resources {
+  margin: 30px auto;
+  max-width: 900px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+#resources h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#resources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#resources ul li {
+  margin: 15px 0;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#resources ul li h3 {
+  font-size: 18px;
+  color:rgb(159, 194, 247);
+  margin-bottom: 8px;
+}
+
+#resources ul li h3 a {
+  text-decoration: none;
+  color:rgb(159, 194, 247);
+}
+
+#resources ul li h3 a:hover {
+  text-decoration: underline;
+  color:rgb(159, 194, 247);
+}
+
+#resources ul li p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Contact Section */
+#contact {
+  margin: 30px auto;
+  max-width: 800px;
+  text-align: center;
+  line-height: 1.6;
+  color: #333;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#contact h1 {
+  margin-bottom: 10px;
+}
+
+#contact p {
+  margin: 5px 0;
+}
+
+/* Footer */
+.footer {
+  background-color: rgb(159, 194, 247);
+  color: #333;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}

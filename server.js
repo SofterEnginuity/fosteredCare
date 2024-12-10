@@ -112,22 +112,22 @@ io.on('connection', (socket) => {
    let client 
    let provider
 
-   if(socket.request.user.userType=="families"){
+   if(socket.request.user.local.userType=="families"){
     client=socket.request.user
     provider=await User.findById(msg.to)
    }else{
     client=await User.findById(msg.to)
     provider=socket.request.user
    }
-    if(!provider.local.msg){
-      provider.local.msg=[]
+    if(!provider.local.clientMsgs){
+      provider.local.clientMsgs=[]
     }
-let msgObj=provider.local.msg.filter(sentMsg=>(sentMsg.from.equals(client._id)))[0]
+let msgObj=provider.local.clientMsgs.filter(sentMsg=>(sentMsg.from.equals(client._id)))[0]
 if(!msgObj){
   msgObj=new Msg()
   msgObj.from=client
   msgObj.msg=[]
-  provider.local.msg.push(msgObj)
+  provider.local.clientMsgs.push(msgObj)
 }
 
 msgObj.msg.push({

@@ -27,15 +27,29 @@ module.exports = function (app, passport, db) {
 
   // PROFILE SECTION =========================
 
-  app.get("/profile", isLoggedIn, function (req, res) {
-    console.log(req.user);
+  app.get("/profile", isLoggedIn, async (req, res)=>{
+    let clients
+    let providers
+  if(req.user.local.userType=='providers'){
+ clients = await User.find({_id:{$in:req.user.local.clientMsgs.map(msgObj=>msgObj.from)}})
+ console.log('clients found', clients);
+}else{
+    providers= await User.find({"local.clientMsgs.from":req.user._id})
+    console.log('providers found', providers)
+  }
+
+
     res.render("profile.ejs", {
       user: req.user,
+      clients: clients,
+      providers: providers
+
     });
   });
 
   // LOGOUT ==============================
   app.get("/logout", function (req, res) {
+
     req.logout(() => {
       console.log("User has logged out!");
     });
@@ -221,7 +235,7 @@ module.exports = function (app, passport, db) {
     res.render("singleListing.ejs");
   });
 
-  // app.get("/singleListing/<%= users[i].userType%>", function (req, res) {
+  // app.get("/singleListing/<%= users[i].local.userType%>", function (req, res) {
   //   res.render("singleListing.ejs");
   // });
 
