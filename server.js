@@ -108,7 +108,7 @@ io.on('connection', (socket) => {
     msg.from = socket.request.user._id
     console.log(msg)
     // console.log(socket.request)
-    io.emit('chat message', msg); // Broadcast the message to all clients
+    // io.emit('chat message', msg); 
    let client 
    let provider
 
@@ -122,21 +122,27 @@ io.on('connection', (socket) => {
     if(!provider.local.clientMsgs){
       provider.local.clientMsgs=[]
     }
+    const newMessage = {
+      date:msg.date,
+      content:msg.content,
+      sent:msg.from.equals(provider._id)
+    }
 let msgObj=provider.local.clientMsgs.filter(sentMsg=>(sentMsg.from.equals(client._id)))[0]
 if(!msgObj){
   msgObj=new Msg()
   msgObj.from=client._id
   msgObj.msg=[]
+  msgObj.msg.push(newMessage)
   provider.local.clientMsgs.push(msgObj)
+  msgObj.save({ suppressWarning: true })
+}else{
+  msgObj.msg.push(newMessage)
 }
 
-msgObj.msg.push({
-  date:msg.date,
-  content:msg.content,
-  sent:msg.from.equals(provider._id)
-})
+
+
 provider.save()
-msgObj.save()
+
   });
 
 });
