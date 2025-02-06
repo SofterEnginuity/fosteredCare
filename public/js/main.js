@@ -6,7 +6,7 @@ document.querySelector('label#email')?.addEventListener('click', function(event)
 })
 
 document.querySelector('label#password')?.addEventListener('click', function(event){
-  document.querySelector('input#email').value = 'rebecca.adams@providers.com'
+  document.querySelector('input#email').value = 'sumaya.rashid@providers.com'
   document.querySelector('input#password').value = 'providers'
 })
 

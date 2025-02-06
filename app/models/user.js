@@ -14,7 +14,7 @@ var childSchema = mongoose.Schema({
 const Child = mongoose.model('Child',childSchema)
 
 var msgSchema = mongoose.Schema({
-    from: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+    from: {type: mongoose.Schema.Types.ObjectId, ref:'User', required:true},
     msg:[{sent:Boolean, content:String, date:Date}]
     
 })

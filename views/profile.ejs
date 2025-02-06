@@ -52,6 +52,15 @@
                       data-field="name" aria-hidden="true"></i>
                     <%= user.local.name %></span>
 
+                   
+                        <label>Age:</label>
+                      <span class="editable dob" data-id="<%= user._id %>"
+                        data-field="dob">
+                <%/*Put back the user id into the data-id when ready to edit*/%>
+                     <%#<i class="fa fa-edit edit-icon" data-id="" data-field="dob" aria-hidden="true"%>
+
+                        <%= Math.floor((new Date() - new Date(user.local.dob)) / (1000 * 60 * 60 * 24 * 365.25)) %></span>
+                   
 
                   <label>Family Size:</label>
                     <span class="editable user" data-id="<%= user._id %>"
@@ -71,13 +80,6 @@
                       <%= user.local.location %></span>
                     -->
                    
-                   <label>Age:</label>
-                      <span class="editable dob" data-id="<%= user._id %>"
-                        data-field="dob">
-                      <i class="fa fa-edit edit-icon"
-                        data-id="<%= user._id %>"
-                        data-field="dob" aria-hidden="true"></i>
-                        <%= Math.floor((new Date() - new Date(user.local.dob)) / (1000 * 60 * 60 * 24 * 365.25)) %></span>
                    
                         <label>Bio:</label>
                         <span class="editable bio" data-id="<%= user._id %>"

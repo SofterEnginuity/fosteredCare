@@ -1,5 +1,6 @@
 
 // set up ======================================================================
+require('dotenv').config();
 var express  = require('express');
 const { createServer } = require("node:http");
 var port     = process.env.PORT || 8065;
@@ -30,7 +31,7 @@ try{
 var db
 
 // configuration ===============================================================
-mongoose.connect(configDB.url,(err, database) => {
+mongoose.connect(process.env.DBURL,(err, database) => {
   if (err) return console.log(err)
   db = database
 console.log('connected to db')
